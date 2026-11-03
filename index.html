@@ -192,6 +192,19 @@ textarea.in{min-height:70px;resize:vertical}
 .switch input:checked + span{background:var(--pos)}
 .switch input:checked + span:before{transform:translateX(18px)}
 .types{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.types-primary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.types-primary .type{text-align:center;padding:18px 10px}
+.types-primary .type b{font-size:14px}
+.types-primary .type .ic{font-size:26px;margin-bottom:4px}
+.types-secondary{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.types-secondary .type{padding:12px 14px}
+.types-secondary .type b{font-size:13px}
+.types-secondary .type span{font-size:12px}
+.type-more-btn{border:0;background:none;color:var(--brand);font-weight:700;font-size:14px;cursor:pointer;padding:10px 0;width:100%;text-align:center}
+.extra-toggle{border:0;background:none;color:var(--muted);font-weight:600;font-size:13px;cursor:pointer;padding:12px 0 4px;width:100%;text-align:center;display:block}
+.extra-toggle:hover{color:var(--fg)}
+.filter-toggle{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--fg)}
+.filter-toggle .badge{background:var(--brand);color:#000;font-size:11px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center}
 .type{border:0;background:var(--surface);box-shadow:var(--shadow);border-radius:18px;padding:16px;text-align:left;cursor:pointer}
 .type .ic{margin-bottom:10px}
 .type b{display:block;font-size:15px}
@@ -1426,10 +1439,11 @@ function viewActivity() {
   const friends = S.d.friends.slice().sort((a, b) => a.name.localeCompare(b.name));
   return `<div class="search"><input class="in" placeholder="Search name, friend, client, notes…" value="${esc(A.q)}" data-input="actQ" id="actQ"></div>
   <div class="chips" style="margin-top:10px">${types.map(([k, l]) => `<button class="chip ${A.type === k ? 'on' : ''}" data-act="actType" data-k="${k}">${l}</button>`).join('')}</div>
-  <div class="filters">
+  <div class="row" style="margin-top:10px;gap:8px"><select class="in grow" data-change="actRange" style="max-width:180px">${[['all', 'All time'], ['this_month', 'This month'], ['last_month', 'Last month'], ['last_3', 'Last 3 months'], ['this_year', 'This year']].map(([k, l]) => `<option value="${k}" ${A.range === k ? 'selected' : ''}>${l}</option>`).join('')}</select>
+  <button class="filter-toggle" data-act="actFilterToggle">Filter${(A.friend || A.cat) ? ` <span class="badge">${(A.friend ? 1 : 0) + (A.cat ? 1 : 0)}</span>` : ''}</button></div>
+  <div class="filters" id="actFilters" ${(A.friend || A.cat) ? '' : 'hidden'}>
     <select class="in" data-change="actFriend"><option value="">All friends</option>${friends.map(f => `<option value="${f.id}" ${A.friend === f.id ? 'selected' : ''}>${esc(f.name)}</option>`).join('')}</select>
     <select class="in" data-change="actCat"><option value="">All types</option>${D.topCats.map(c => `<option value="${c.id}" ${A.cat === c.id ? 'selected' : ''}>${c.icon} ${esc(c.name)}</option>`).join('')}</select>
-    <select class="in" data-change="actRange">${[['all', 'All time'], ['this_month', 'This month'], ['last_month', 'Last month'], ['last_3', 'Last 3 months'], ['this_year', 'This year']].map(([k, l]) => `<option value="${k}" ${A.range === k ? 'selected' : ''}>${l}</option>`).join('')}</select>
   </div>
   ${list.length ? `<div class="act-sum"><span>${list.length} entr${list.length === 1 ? 'y' : 'ies'}</span><span class="pos num">+${money(inSum)}</span><span class="neg num">−${money(outSum)}</span></div>` : ''}
   <div id="actList">${list.length ? Object.keys(groups).map(dt => `<div class="day">${esc(fmtDay(dt))}</div><div class="list">${groups[dt].map(x => txnRow(x)).join('')}</div>`).join('') : `<div class="list" style="margin-top:14px"><div class="empty"><div class="e">🗂️</div>${S.d.transactions.length ? 'Nothing matches these filters.' : 'No entries yet. Tap + to add your first one.'}</div></div>`}</div>
@@ -1497,9 +1511,9 @@ function viewFriend() {
 
 /* ── More, budgets, categories, settings, reminders ── */
 function viewMore() {
-  const links = [['reports', '', 'Reports', 'Money in and out, per account'], ['settings', '', 'Accounts & opening balances', 'Set the starting balance of each account'], ['budgets', '', 'Budget (HDFC Personal)', 'Optional monthly spending limit'], ['reminders', '', 'Reminders', 'Who needs to pay you, and when'], ['categories', '', 'Spending types', 'Food, travel, shopping and more'], ['settings', '', 'Settings', 'Your name, reminder email, layout']];
-  return `<div class="list">${links.map(([v, i, t, s]) => `<button class="item" data-act="nav" data-view="${v}"><div class="grow"><div class="t">${t}</div><div class="s">${s}</div></div><span class="muted">›</span></button>`).join('')}
-  <a class="item" href="${esc(S.d.spreadsheetUrl)}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><div class="grow"><div class="t">Open Google Sheet</div><div class="s">Your data lives here</div></div><span class="muted">↗</span></a></div>
+  const links = [['reports', '📊', 'Reports', 'Money in and out, per account'], ['settings', '🏦', 'Accounts & opening balances', 'Set the starting balance of each account'], ['budgets', '💰', 'Budget (HDFC Personal)', 'Optional monthly spending limit'], ['reminders', '🔔', 'Reminders', 'Who needs to pay you, and when'], ['categories', '🏷️', 'Spending types', 'Food, travel, shopping and more'], ['settings', '⚙️', 'Settings', 'Your name, reminder email, layout']];
+  return `<div class="list">${links.map(([v, i, t, s]) => `<button class="item" data-act="nav" data-view="${v}"><div class="ic" style="font-size:22px;width:36px;text-align:center">${i}</div><div class="grow"><div class="t">${t}</div><div class="s">${s}</div></div><span class="muted">›</span></button>`).join('')}
+  <a class="item" href="${esc(S.d.spreadsheetUrl)}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><div class="ic" style="font-size:22px;width:36px;text-align:center">📋</div><div class="grow"><div class="t">Open Google Sheet</div><div class="s">Your data lives here</div></div><span class="muted">↗</span></a></div>
   <div class="section"><h2>Quick help</h2></div>
   <div class="card" style="line-height:1.6">
     <div class="hint" style="margin:0 0 8px;font-weight:600">How this app works</div>
@@ -1651,7 +1665,14 @@ function openTypePicker() {
   const id = selAcc(), allowed = id === 'all' ? null : purposeOf(id).types;
   const T = TYPE_TILES.filter(([k]) => !allowed || allowed.includes(k));
   const a = accById(id);
-  const w = openSheet(a ? 'Add to ' + (a.short || a.name) : 'What do you want to add?', `<div class="types">${T.map(([k, i, t, s, c]) => `<button class="type ${c || ''}" data-type="${k}" data-tone="${TONES[k]}"><div class="ic">${i}</div><b>${t}</b><span>${s}</span></button>`).join('')}</div>`);
+  const PRIMARY = ['expense', 'income', 'transfer'];
+  const pri = T.filter(([k]) => PRIMARY.includes(k));
+  const sec = T.filter(([k]) => !PRIMARY.includes(k));
+  let html = `<div class="types-primary">${pri.map(([k, i, t]) => `<button class="type" data-type="${k}" data-tone="${TONES[k]}"><div class="ic">${i}</div><b>${t}</b></button>`).join('')}</div>`;
+  if (sec.length) html += `<button class="type-more-btn" id="typeMoreBtn">More options ▾</button><div class="types-secondary" id="typeSecGrid" hidden>${sec.map(([k, i, t, s]) => `<button class="type" data-type="${k}" data-tone="${TONES[k]}"><div class="ic">${i}</div><b>${t}</b><span>${s}</span></button>`).join('')}</div>`;
+  const w = openSheet(a ? 'Add to ' + (a.short || a.name) : 'What do you want to add?', html);
+  const moreBtn = $('#typeMoreBtn', w);
+  if (moreBtn) moreBtn.onclick = () => { $('#typeSecGrid', w).hidden = false; moreBtn.hidden = true; };
   $$('.type', w).forEach(b => b.onclick = () => { closeSheet(w); openTxnForm(b.dataset.type, null, id !== 'all' ? { accountId: id } : {}); });
 }
 
@@ -1711,10 +1732,12 @@ function openTxnForm(type, existing, prefill = {}) {
   }
   if (type === 'expense') {
     const rec = t.recurring || {};
-    body += `<div class="f"><label>Paid using</label><select class="in" name="paymentMethod">${methodOptions(val('paymentMethod'))}</select></div>
+    body += `<button type="button" class="extra-toggle" id="expExtras">More options ▾</button><div id="expExtrasBox" ${existing ? '' : 'hidden'}>
+    <div class="f"><label>Paid using</label><select class="in" name="paymentMethod">${methodOptions(val('paymentMethod'))}</select></div>
     ${t.recurringSourceId ? '<div class="hint">Added by itself from a repeating expense.</div>' : `<label class="toggle"><span><b>Repeats</b><div class="small muted">Add this by itself every month (like rent)</div></span><span class="switch"><input type="checkbox" name="recEnabled" ${rec.enabled ? 'checked' : ''}><span></span></span></label>
     <div id="recBox" ${rec.enabled ? '' : 'hidden'}><div class="two"><div class="f" style="margin-top:0"><label>Every</label><div class="row"><input class="in" type="number" name="recInterval" min="1" value="${rec.interval || 1}" style="width:70px"><select class="in" name="recFreq">${['daily', 'weekly', 'monthly', 'yearly'].map(f => `<option value="${f}" ${(rec.freq || 'monthly') === f ? 'selected' : ''}>${{ daily: 'day(s)', weekly: 'week(s)', monthly: 'month(s)', yearly: 'year(s)' }[f]}</option>`).join('')}</select></div></div>
-    <div class="f" style="margin-top:0"><label>Until (optional)</label><input class="in" type="date" name="recEnd" value="${rec.endDate || ''}"></div></div></div>`}`;
+    <div class="f" style="margin-top:0"><label>Until (optional)</label><input class="in" type="date" name="recEnd" value="${rec.endDate || ''}"></div></div></div>`}
+    </div>`;
   }
   if (type === 'shared') body += `<div id="splitUI"></div>
     <div class="f"><label>When should friends pay you back? <span class="muted">(optional)</span></label><input class="in" type="date" name="dueDate" value="${val('dueDate')}">
@@ -1739,10 +1762,13 @@ function openTxnForm(type, existing, prefill = {}) {
     <div class="f"><label>How?</label><select class="in" name="paymentMethod">${methodOptions(val('paymentMethod'))}</select></div></div>
     <div id="allocUI"></div>`;
   }
-  body += `<div class="f"><label>Notes</label><textarea class="in" name="notes" placeholder="Optional">${esc(val('notes'))}</textarea></div>`;
+  const hasNotes = val('notes') || val('receiptUrl');
+  if (type !== 'expense') body += `<button type="button" class="extra-toggle" id="notesToggle">${hasNotes ? 'Notes ▴' : 'Add notes ▾'}</button>`;
+  body += `<div id="notesBox" ${hasNotes || type === 'expense' ? '' : 'hidden'}><div class="f"><label>Notes</label><textarea class="in" name="notes" placeholder="Optional">${esc(val('notes'))}</textarea></div>`;
   if (type === 'expense' || type === 'shared') {
     body += `<div class="f"><label>Receipt</label><div class="row"><input class="in grow" name="receiptUrl" value="${esc(val('receiptUrl'))}" placeholder="Paste a link, or upload →"><label class="mini-btn" style="padding:10px 12px;cursor:pointer">Upload<input type="file" accept="image/*,application/pdf" id="rcptFile" hidden></label></div><div class="hint" id="rcptHint"></div></div>`;
   }
+  body += `</div>`;
   body += `<div id="formErr"></div></form>`;
   const footer = `${existing ? '<button class="btn danger" type="button" data-del>Delete</button>' : ''}<button class="btn primary" type="button" data-save>${existing ? 'Save changes' : 'Save'}</button>`;
   const w = openSheet((existing ? 'Edit · ' : '') + titles[type], body, { footer });
@@ -1779,6 +1805,11 @@ function openTxnForm(type, existing, prefill = {}) {
   if (F('source')) F('source').addEventListener('input', () => { F('source').dataset.typed = '1'; });
   if (F('direction')) setTimeout(() => $$('#dirSeg button', w).forEach(b => b.addEventListener('click', accChanged)), 0);
   accChanged();
+  // "More options" toggles
+  const expExt = $('#expExtras', w);
+  if (expExt) expExt.onclick = () => { const box = $('#expExtrasBox', w); box.hidden = !box.hidden; expExt.textContent = box.hidden ? 'More options ▾' : 'Less options ▴'; };
+  const notesT = $('#notesToggle', w);
+  if (notesT) notesT.onclick = () => { const box = $('#notesBox', w); box.hidden = !box.hidden; notesT.textContent = box.hidden ? 'Add notes ▾' : 'Notes ▴'; };
   // recurring toggle
   if (F('recEnabled')) F('recEnabled').onchange = () => { $('#recBox', w).hidden = !F('recEnabled').checked; };
   // inline new friend
@@ -2007,8 +2038,8 @@ function openFriendForm(f, onSaved) {
   f = f || {}; const ctx = {};
   const w = openSheet(f.id ? 'Edit friend' : 'New friend', `<div class="f" style="margin-top:0"><label>Name</label><input class="in" id="fName" value="${esc(f.name || '')}" placeholder="e.g. Aarav Mehta"></div>
     <div class="f"><label>Email (optional — for reminders)</label><input class="in" id="fEmail" type="email" value="${esc(f.email || '')}"></div>
-    <div class="f"><label>Profile image URL (optional)</label><input class="in" id="fImg" value="${esc(f.imageUrl || '')}" placeholder="https://…"></div>
-    <div class="f"><label>Notes</label><textarea class="in" id="fNotes">${esc(f.notes || '')}</textarea></div><div id="fErr"></div>`,
+    <input type="hidden" id="fImg" value="${esc(f.imageUrl || '')}">
+    <div class="f"><label>Notes <span class="muted">(optional)</span></label><textarea class="in" id="fNotes" placeholder="e.g. College friend, roommate">${esc(f.notes || '')}</textarea></div><div id="fErr"></div>`,
     { footer: `<button class="btn primary" data-save>Save friend</button>` });
   ctx.errEl = $('#fErr', w);
   setTimeout(() => $('#fName', w).focus(), 150);
@@ -2073,6 +2104,7 @@ const ACT = {
   addFor: el => openTxnForm(el.dataset.type, null, { friendId: el.dataset.id }),
   activityType: el => { S.act = { q: '', type: el.dataset.type, friend: '', cat: '', range: 'all' }; go('activity'); },
   actType: el => { S.act.type = el.dataset.k; render(); },
+  actFilterToggle: () => { const f = $('#actFilters'); if (f) f.hidden = !f.hidden; },
   newFriend: () => openFriendForm(null),
   editFriend: el => openFriendForm(D.friendMap[el.dataset.id]),
   toggleFriend: async el => {
