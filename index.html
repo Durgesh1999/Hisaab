@@ -13,28 +13,31 @@
   document.documentElement.setAttribute('data-layout', mode);
 })();
 </script>
-<meta name="theme-color" content="#FFD600">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FFD600'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23000' font-family='Arial' font-weight='700'%3E%E2%82%B9%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#FAF9F6">
+<meta name="theme-color" content="#161513" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F2C230'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23000' font-family='Arial' font-weight='700'%3E%E2%82%B9%3C/text%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>Malkin's Tijori</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+/* Yellow is the brand, but only ever in small doses: the add button, the active tab,
+   primary actions and progress bars. Large areas stay neutral so the screen is restful. */
 :root{
-  --bg:#FFFDF5; --surface:#FFFFFF; --surface2:#FFF8E1; --ink:#1A1A1A; --ink2:#555; --muted:#888; --line:#F0E6C0;
-  --brand:#FFD600; --brand-strong:#FFC107; --brand-ink:#000; --brand-text:#8B6914; --accent:#FFD600; --pink:#E8536D;
-  --pos:#1D9E4C; --pos-bg:#EBF7EE; --neg:#D93025; --neg-bg:#FDECEA; --warn:#B36B00; --warn-bg:#FFF6E0; --info-bg:#FFF8E1;
-  --grad:linear-gradient(135deg,#FFD600 0%,#FFC107 100%);
-  --shadow:0 2px 8px rgba(200,170,60,.12);
+  --bg:#FAF9F6; --surface:#FFFFFF; --surface2:#F4F2EC; --ink:#232220; --ink2:#5A574F; --muted:#8A867C; --line:#E9E6DE;
+  --brand:#F2C230; --brand-strong:#E0AE1B; --brand-ink:#1A1A1A; --brand-text:#7A6210; --accent:#F2C230; --pink:#C96A7E;
+  --pos:#2E7D55; --pos-bg:#EAF3EE; --neg:#C0544B; --neg-bg:#FAEDEB; --warn:#8A6514; --warn-bg:#FAF2E0; --info-bg:#F4F2EC;
+  --grad:linear-gradient(135deg,#F2C230 0%,#E0AE1B 100%);
+  --shadow:0 1px 2px rgba(35,34,32,.04);
   --radius:16px; --radius-sm:10px;
   --display:"Figtree","Plus Jakarta Sans",system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){
-  :root{ --bg:#121210; --surface:#1C1B18; --surface2:#2A2820; --ink:#F0EDE0; --ink2:#B0A890; --muted:#7A7560; --line:#3A3628;
-    --brand:#FFD600; --brand-strong:#FFE44D; --brand-ink:#000; --brand-text:#FFD600; --accent:#FFD600; --pink:#FF8A9A;
-    --pos:#5BD37E; --pos-bg:#16301E; --neg:#FF7B72; --neg-bg:#3A1A18; --warn:#FFC24D; --warn-bg:#3A2C10; --info-bg:#2A2820;
-    --grad:linear-gradient(135deg,#FFD600 0%,#FFC107 100%);
-    --shadow:0 2px 8px rgba(0,0,0,.3); --radius:16px; --radius-sm:10px; color-scheme:dark; }
+  :root{ --bg:#161513; --surface:#1E1D1A; --surface2:#2A2825; --ink:#EDEAE2; --ink2:#AEA99C; --muted:#7E7A70; --line:#33312C;
+    --brand:#E8BC3C; --brand-strong:#F2C230; --brand-ink:#1A1A1A; --brand-text:#E8BC3C; --accent:#E8BC3C; --pink:#D98A9C;
+    --pos:#6BBE8C; --pos-bg:#1B2E23; --neg:#E08B82; --neg-bg:#332020; --warn:#D9AC5A; --warn-bg:#302716; --info-bg:#2A2825;
+    --grad:linear-gradient(135deg,#E8BC3C 0%,#D1A52E 100%);
+    --shadow:0 1px 2px rgba(0,0,0,.25); --radius:16px; --radius-sm:10px; color-scheme:dark; }
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Figtree","Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.5}
@@ -83,7 +86,7 @@ main{padding:0 16px}
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
 @media(min-width:620px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .stat{background:var(--surface);border-radius:var(--radius);padding:14px;cursor:pointer;border:1px solid var(--line);text-align:left;min-width:0}
-.stat .k{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;display:flex;gap:6px;align-items:center}
+.stat .k{font-size:12.5px;font-weight:500;color:var(--ink2);text-transform:none;letter-spacing:0;display:flex;gap:7px;align-items:center}
 .stat .v{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stat .s{font-size:12px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tag{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:6px;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
@@ -122,8 +125,9 @@ main{padding:0 16px}
 .amt{font-weight:600;text-align:right;white-space:nowrap}
 .amt .s{font-weight:500}
 .empty{padding:32px 18px;text-align:center;color:var(--muted);font-size:14px}
-.empty .e{font-size:24px;margin-bottom:8px;opacity:.5}
-.day{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:16px 4px 6px}
+.empty .e{font-size:24px;margin-bottom:10px;opacity:.45;display:flex;justify-content:center;color:var(--ink2)}
+.empty .e:empty{display:none}
+.day{font-size:12.5px;font-weight:600;color:var(--muted);text-transform:none;letter-spacing:0;margin:18px 4px 7px}
 .mini-btn{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:6px 10px;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap}
 .mini-btn:hover{border-color:var(--ink2);background:var(--surface2)}
 .mini-btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
@@ -193,15 +197,16 @@ textarea.in{min-height:70px;resize:vertical}
 .switch input:checked + span:before{transform:translateX(18px)}
 .types{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .types-primary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
-.types-primary .type{text-align:center;padding:18px 10px}
-.types-primary .type b{font-size:14px}
-.types-primary .type .ic{font-size:26px;margin-bottom:4px}
+.types-primary .type{text-align:center;padding:18px 8px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.types-primary .type b{font-size:13.5px;line-height:1.25;hyphens:none}
+.types-primary .type .ic{margin-bottom:6px;width:40px;height:40px;border-radius:10px;display:grid;place-items:center}
 .types-secondary{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .types-secondary .type{padding:12px 14px}
 .types-secondary .type b{font-size:13px}
 .types-secondary .type span{font-size:12px}
-.type-more-btn{border:0;background:none;color:var(--brand);font-weight:700;font-size:14px;cursor:pointer;padding:10px 0;width:100%;text-align:center}
-.extra-toggle{border:0;background:none;color:var(--muted);font-weight:600;font-size:13px;cursor:pointer;padding:12px 0 4px;width:100%;text-align:center;display:block}
+.type-more-btn{border:0;background:none;color:var(--ink2);font-weight:600;font-size:14px;cursor:pointer;padding:13px 0;min-height:46px;width:100%;text-align:center}
+.type-more-btn:hover{color:var(--ink)}
+.extra-toggle{border:0;background:none;color:var(--muted);font-weight:600;font-size:13px;cursor:pointer;padding:14px 0 8px;min-height:46px;width:100%;text-align:center;display:block}
 .extra-toggle:hover{color:var(--fg)}
 .filter-toggle{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--fg)}
 .filter-toggle .badge{background:var(--brand);color:#000;font-size:11px;font-weight:700;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center}
@@ -229,7 +234,7 @@ textarea.in{min-height:70px;resize:vertical}
 .boot{padding:40px 16px;text-align:center}
 .search{position:relative}
 .search .in{padding-left:38px}
-.search:before{content:"⌕";position:absolute;left:13px;top:8px;font-size:20px;color:var(--muted)}
+.search:before{content:"";position:absolute;left:14px;top:13px;width:16px;height:16px;background:currentColor;-webkit-mask:var(--search-mask) center/contain no-repeat;mask:var(--search-mask) center/contain no-repeat;font-size:0;color:var(--muted)}
 .filters{display:flex;gap:8px;margin-top:10px}
 .filters select{flex:1;min-width:0;padding:8px 10px;font-size:13px}
 
@@ -255,7 +260,7 @@ html.lap body{font-size:15px}
 html.lap .tabbar{display:none}
 html.lap .side{display:flex;flex-direction:column;gap:4px;position:fixed;top:0;bottom:0;left:0;width:236px;padding:22px 14px;background:var(--surface);border-right:1px solid var(--line);z-index:25}
 html.lap .side .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.02em;padding:0 8px 18px}
-html.lap .side .logo{width:34px;height:34px;border-radius:10px;background:var(--brand);color:var(--accent);display:grid;place-items:center;font-weight:800;font-size:18px}
+html.lap .side .logo{width:34px;height:34px;border-radius:10px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:16px;letter-spacing:.02em}
 html.lap .side .add{border:0;background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 14px;font-weight:800;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
 html.lap .side .add kbd{font:inherit;font-size:11px;opacity:.7;border:1px solid currentColor;border-radius:5px;padding:0 5px}
 html.lap .snav{border:0;background:none;text-align:left;padding:10px 12px;border-radius:10px;font-weight:600;font-size:14px;color:var(--ink2);cursor:pointer;display:flex;gap:10px;align-items:center}
@@ -282,42 +287,49 @@ html.lap #toast{bottom:28px;left:calc(50% + 118px)}
 html.lap .types{grid-template-columns:repeat(3,1fr)}
 html.lap .type.wide{grid-column:span 1}
 @media (max-width:1180px){ html.lap .dash .stats{grid-template-columns:repeat(3,minmax(0,1fr))} }
-/* ── Campus-app yellow theme ── */
+/* ── Theme: quiet surfaces, yellow reserved for actions ── */
 body{background:var(--bg)}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--brand);z-index:40}
-.topbar{background:var(--brand);color:#000;backdrop-filter:none;padding-bottom:10px;border-bottom:none;border-radius:0 0 20px 20px;margin-bottom:0;box-shadow:0 4px 16px rgba(200,170,0,.18)}
-.topbar h1{font-family:var(--display);letter-spacing:-.02em;color:#000}
-.topbar .sync{color:rgba(0,0,0,.5)}
-.topbar .sync .dot{background:#1A7A30} .topbar .sync .dot.busy{background:#333} .topbar .sync .dot.err{background:#B00020}
-.topbar .back,.topbar .lay-btn{background:rgba(0,0,0,.08);border-color:transparent;color:#000;box-shadow:none}
+.topbar{background:color-mix(in srgb,var(--bg) 88%,transparent);color:var(--ink);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding-bottom:10px;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none}
+.topbar h1{font-family:var(--display);letter-spacing:-.02em;color:var(--ink);font-size:19px}
+.topbar .sync{color:var(--muted)}
+.topbar .sync .dot{background:var(--pos)} .topbar .sync .dot.busy{background:var(--brand-strong)} .topbar .sync .dot.err{background:var(--neg)}
+.topbar .back,.topbar .lay-btn{background:var(--surface2);border-color:transparent;color:var(--ink2);box-shadow:none}
 .section h2,.hero .big,.stat .v,.sheet-h h3,.side .brand,.amount-in{font-family:var(--display)}
-.hero{background:var(--grad);color:#000;box-shadow:0 4px 20px rgba(200,170,0,.22);position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.18);top:-40px;right:-20px}
-.hero::after{content:"";position:absolute;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.12);bottom:-20px;left:30px}
-.hero > *{position:relative;z-index:1}
-.hero .label{opacity:.6;color:#000}
-.hero .pill{background:rgba(0,0,0,.1);color:#000}
-.card,.list,.stat,.type{border:1px solid var(--line);box-shadow:var(--shadow)}
-.list{box-shadow:var(--shadow)}
+/* Sentence case reads more calmly than tracked-out capitals. */
+.section h2{text-transform:none;letter-spacing:0;font-size:14px;font-weight:600;color:var(--ink2)}
+/* The balance is the reason you open the app, so it gets the one dark surface on the screen. */
+.hero{background:var(--ink);color:var(--bg);box-shadow:none;position:relative;overflow:hidden}
+.hero .label{opacity:.65;color:inherit;text-transform:none;letter-spacing:0;font-size:13px;font-weight:500}
+.hero .big{font-size:34px}
+.hero .pill{background:rgba(255,255,255,.12);color:inherit}
+/* At night the hero must not invert to near-white — keep it a raised dark surface. */
+@media (prefers-color-scheme: dark){
+  .hero{background:#232220;color:var(--ink);border:1px solid var(--line)}
+}
+.card,.list,.stat,.type{border:1px solid var(--line);box-shadow:none}
+.list{box-shadow:none}
 .item{padding:12px 14px}
 .ic{background:var(--surface2);border-radius:var(--radius-sm)}
 .stat{position:relative;overflow:hidden}
 .stat .si{width:32px;height:32px;border-radius:var(--radius-sm);display:inline-grid;place-items:center;font-size:15px;background:var(--tone-bg,var(--surface2));letter-spacing:0}
-[data-tone=violet]{--tone:#7C4DFF;--tone-bg:#F3EFFF}
-[data-tone=mint]{--tone:#1EB980;--tone-bg:#E8F8F0}
-[data-tone=coral]{--tone:#FF5A5F;--tone-bg:#FFECEC}
-[data-tone=sky]{--tone:#2E9BFF;--tone-bg:#E8F2FF}
-[data-tone=pink]{--tone:#FF4D9A;--tone-bg:#FFF0F5}
-[data-tone=sun]{--tone:#FFB300;--tone-bg:#FFF8E1}
-.stat[data-tone]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--tone);opacity:.8}
+[data-tone=violet]{--tone:#6B5BB5;--tone-bg:#F0EEF8}
+[data-tone=mint]{--tone:#3E8F6E;--tone-bg:#EBF4EF}
+[data-tone=coral]{--tone:#C4706B;--tone-bg:#F9EEED}
+[data-tone=sky]{--tone:#4A82B8;--tone-bg:#EDF2F8}
+[data-tone=pink]{--tone:#BE6D8C;--tone-bg:#F8EFF3}
+[data-tone=sun]{--tone:#B8912F;--tone-bg:#F8F2E2}
+@media (prefers-color-scheme: dark){
+  [data-tone=violet]{--tone-bg:#2A2738} [data-tone=mint]{--tone-bg:#1E2E27} [data-tone=coral]{--tone-bg:#322422}
+  [data-tone=sky]{--tone-bg:#1F2833} [data-tone=pink]{--tone-bg:#2F2429} [data-tone=sun]{--tone-bg:#302A1C}
+}
 .type[data-tone] .ic{background:var(--tone-bg)}
 .chip{border-color:var(--line);background:var(--surface)}
-.chip.on{background:var(--brand);color:#000;border-color:var(--brand);font-weight:700}
-.fab{background:var(--brand);color:#000;box-shadow:0 4px 16px rgba(200,170,0,.35);font-weight:700}
-.btn.primary{background:var(--brand);color:#000;box-shadow:0 2px 8px rgba(200,170,0,.18);font-weight:700}
-.btn.primary:hover{opacity:.9;box-shadow:0 4px 12px rgba(200,170,0,.25)}
-.mini-btn.primary{background:var(--brand);border-color:var(--brand);color:#000;font-weight:700}
-.tabbar{background:rgba(255,253,245,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+.fab{background:var(--brand);color:var(--brand-ink);box-shadow:0 2px 8px rgba(35,34,32,.14);font-weight:700}
+.btn.primary{background:var(--brand);color:var(--brand-ink);box-shadow:none;font-weight:700}
+.btn.primary:hover{background:var(--brand-strong)}
+.mini-btn.primary{background:var(--brand);border-color:var(--brand);color:var(--brand-ink);font-weight:700}
+.tabbar{background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
 .tab{position:relative;color:var(--muted);font-size:11px}
 .tab svg{stroke-width:1.8}
 .tab.on{color:var(--ink);font-weight:700}
@@ -335,7 +347,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .legend button .sw{width:10px;height:10px;border-radius:50%}
 html.lap .topbar{border-radius:0;margin:0;padding-left:32px;border-bottom:1px solid var(--line);background:var(--brand);box-shadow:none}
 html.lap .side{background:var(--surface);border-right:1px solid var(--line)}
-html.lap .side .logo{background:var(--brand);color:#000;font-weight:800}
+html.lap .side .logo{background:var(--ink);color:var(--bg);font-weight:700}
 html.lap .side .add{background:var(--brand);color:#000;box-shadow:0 2px 8px rgba(200,170,0,.2);font-weight:800}
 html.lap .snav.on{background:var(--surface2);color:var(--ink);box-shadow:inset 3px 0 0 var(--brand)}
 /* ── Home pieces ── */
@@ -358,7 +370,7 @@ html.lap .snav.on{background:var(--surface2);color:var(--ink);box-shadow:inset 3
 .emojis button{width:40px;height:40px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);font-size:20px;cursor:pointer}
 .emojis button.on{border-color:var(--ink);background:var(--surface2)}
 .big-note{text-align:center;padding:6px 4px 2px}
-.big-note .e{font-size:40px}
+.big-note .e{font-size:40px;display:flex;justify-content:center;color:var(--ink2);margin-bottom:4px}
 .big-note h4{font-family:var(--display);font-size:20px;margin:6px 0}
 html.lap .goals{grid-template-columns:repeat(3,minmax(0,1fr))}
 html.lap .owe{grid-template-columns:1fr 1fr}
@@ -368,7 +380,7 @@ html.lap .owe{grid-template-columns:1fr 1fr}
 .tab svg{width:22px;height:22px}
 .fab{width:48px;height:48px;font-size:24px;margin-top:-20px;border-radius:50%}
 .tab.on::after{top:-1px}
-#app{padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+#app{padding-bottom:calc(88px + env(safe-area-inset-bottom))}
 #toast{bottom:calc(70px + env(safe-area-inset-bottom))}
 /* ── Accounts ── */
 .topbar{flex-wrap:wrap}
@@ -376,23 +388,54 @@ html.lap .owe{grid-template-columns:1fr 1fr}
 .acc-btn b{display:block;font-size:13.5px;line-height:1.2}
 .acc-bal{font-size:12px;color:var(--muted)}
 .acc-btn .chev{font-size:13px;color:var(--muted)}
-.acc-ic{width:28px;height:28px;border-radius:6px;display:grid;place-items:center;font-size:14px;flex:none;color:#fff}
-.acc-ic.lg{width:38px;height:38px;border-radius:8px;font-size:19px}
+/* Account marks: the bank's colour as a soft tint with the glyph stroked in it, rather than a
+   saturated block. Four of these sit side by side, so they have to stay quiet. */
+.acc-ic{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;flex:none;
+  background:color-mix(in srgb,var(--acc-c,var(--ink)) 13%,transparent)!important;color:var(--acc-c,var(--ink))}
+.acc-ic.lg{width:40px;height:40px;border-radius:10px}
+.acc-ic .ico{width:18px;height:18px}
+.acc-ic.lg .ico{width:22px;height:22px}
+.ico{flex:none;vertical-align:middle}
+:root{--search-mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E")}
+.hc{display:inline-flex;align-items:center;gap:7px}
+.hc.ok{color:var(--pos)} .hc.bad{color:var(--neg)}
+/* Square icon-only buttons, so three of them don't crowd out the row's text. */
+.mini-btn.icon-btn{padding:0;width:32px;height:32px;display:inline-grid;place-items:center;color:var(--ink2)}
+.mini-btn.icon-btn:hover{color:var(--ink)}
+/* The amount is the point of the row, so it gets its own slot instead of being truncated
+   out of the subtitle. On a phone the buttons drop to a second line to leave the text room. */
+.due-row{flex-wrap:wrap;align-items:center}
+.due-row .grow{min-width:0;flex:1 1 auto}
+.due-amt{font-weight:700;font-size:15px;white-space:nowrap;margin-left:8px}
+.due-actions{flex:none;gap:4px!important}
+@media (max-width:560px){
+  .due-actions{width:100%;justify-content:flex-end;margin-top:8px}
+}
+.snav-i{display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;color:inherit;opacity:.85}
+.snav.on .snav-i{opacity:1}
+/* Icon slots hold a stroked glyph, so they tint the icon rather than sit behind an emoji. */
+.ic > .ico{color:var(--ink2)}
+.stat .si{color:var(--tone,var(--ink2))}
+.quick button span{color:var(--tone,var(--ink2))}
+.type .ic > .ico{color:var(--tone,var(--ink2))}
+.item .ic > .ico{color:var(--ink2)}
 .acc-opt.on{background:var(--surface2)}
 .wallets{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
 .wallet{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:12px;text-align:left;font:inherit;color:inherit;cursor:pointer;box-shadow:none;position:relative;overflow:hidden;min-width:0}
 .wallet::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--acc)}
 .wallet .row{gap:8px}
-.w-name{font-weight:700;font-size:13px;line-height:1.25;white-space:normal!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* min-height keeps all four cards level whether the bank name runs to one line or two */
+.w-name{font-weight:600;font-size:13px;line-height:1.3;min-height:2.6em;white-space:normal!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .w-sub{font-size:11px;color:var(--muted)}
-.w-bal{font-family:var(--display);font-size:20px;font-weight:700;margin-top:8px;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.w-bal{font-family:var(--display);font-size:20px;font-weight:700;margin-top:6px;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .w-flow{display:flex;gap:8px;font-size:11px;font-weight:600;margin-top:2px;flex-wrap:wrap}
 .wallet .chev{color:var(--muted);font-size:16px}
-.acc-hero{background:linear-gradient(135deg,var(--acc) 0%,color-mix(in srgb,var(--acc) 70%,#000) 100%)!important;color:#fff!important;box-shadow:none!important}
+/* Account heroes keep their bank colour, muted toward the ink so they sit quietly beside each other. */
+.acc-hero{background:linear-gradient(135deg,color-mix(in srgb,var(--acc) 80%,#2A2824) 0%,color-mix(in srgb,var(--acc) 52%,#201F1C) 100%)!important;color:#fff!important;box-shadow:none!important}
 .acc-hero .label{opacity:.8}
-.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px;background:rgba(255,255,255,.12);border-radius:8px;padding:8px}
-.hero:not(.acc-hero) .trio{background:rgba(255,255,255,.08)}
-.trio span{display:block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;opacity:.75}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px;background:rgba(255,255,255,.1);border-radius:8px;padding:8px}
+.hero:not(.acc-hero) .trio{background:rgba(255,255,255,.07)}
+.trio span{display:block;font-size:11px;font-weight:500;text-transform:none;letter-spacing:0;opacity:.7}
 .trio b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
 .big-trio b{font-size:17px}
 .budget-mini{margin-top:10px}
@@ -410,7 +453,8 @@ html.lap .topbar{flex-wrap:nowrap}
 .lay-btn{border:1px solid var(--line);background:transparent;border-radius:6px;height:32px;padding:0 8px;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:5px;white-space:nowrap}
 .lay-btn:hover{background:var(--surface2)}
 .lay-opts{display:grid;gap:8px}
-@media (max-width:420px){html:not(.lap) .lay-t{display:none}}
+/* On a phone the layout picker is clutter in the header — it stays available in Settings. */
+html:not(.lap) .lay-btn{display:none}
 html.lap .lay-btn{height:34px}
 .lay-opt{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);background:var(--surface);border-radius:8px;padding:12px;text-align:left;cursor:pointer}
 .lay-opt.on{border-color:var(--ink)}
@@ -421,22 +465,22 @@ html.lap .lay-btn{height:34px}
 </head>
 <body>
 <aside class="side" aria-label="Main navigation">
-  <div class="brand"><span class="logo">👑</span>Malkin's Tijori</div>
+  <div class="brand"><span class="logo">T</span>Malkin's Tijori</div>
   <button class="add" data-act="add">+ Add <kbd>N</kbd></button>
-  <button class="snav" data-act="nav" data-view="home">🏠 Home</button>
-  <button class="snav" data-act="nav" data-view="activity">📋 Activity</button>
-  <button class="snav" data-act="nav" data-view="friends">👥 Friends</button>
+  <button class="snav" data-act="nav" data-view="home"><span class="snav-i"></span>Home</button>
+  <button class="snav" data-act="nav" data-view="activity"><span class="snav-i"></span>Activity</button>
+  <button class="snav" data-act="nav" data-view="friends"><span class="snav-i"></span>Friends</button>
   <div class="sep"></div>
-  <button class="snav" data-act="nav" data-view="reports">📊 Reports</button>
-  <button class="snav" data-act="nav" data-view="budgets">💰 Budget (HDFC)</button>
-  <button class="snav" data-act="nav" data-view="reminders">🔔 Reminders</button>
-  <button class="snav" data-act="nav" data-view="categories">🏷️ Spending types</button>
-  <button class="snav" data-act="nav" data-view="settings">⚙️ Settings</button>
+  <button class="snav" data-act="nav" data-view="reports"><span class="snav-i"></span>Reports</button>
+  <button class="snav" data-act="nav" data-view="budgets"><span class="snav-i"></span>Budget (HDFC)</button>
+  <button class="snav" data-act="nav" data-view="reminders"><span class="snav-i"></span>Reminders</button>
+  <button class="snav" data-act="nav" data-view="categories"><span class="snav-i"></span>Spending types</button>
+  <button class="snav" data-act="nav" data-view="settings"><span class="snav-i"></span>Settings</button>
   <div class="foot">Shortcuts: <b>N</b> new · <b>/</b> search · <b>L</b> layout · <b>G</b> then <b>H/A/F</b> · <b>Esc</b> close</div>
 </aside>
 <div id="app">
   <header class="topbar">
-    <button class="back" id="backBtn" data-act="back" hidden aria-label="Back">←</button>
+    <button class="back" id="backBtn" data-act="back" hidden aria-label="Back"><svg class="ico" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
     <h1 id="title">Malkin's Tijori</h1>
     <button class="lay-btn" id="layBtn" data-act="layout" aria-label="Change layout" title="Change layout (L)"></button>
     <div class="sync" id="sync"><span class="dot busy"></span><span>Connecting…</span></div>
@@ -797,6 +841,50 @@ function applyState(st) {
   derive();
   render();
 }
+/* ════════════════════════ Icons ════════════════════════
+   One stroked line-icon set for everything the app itself draws. Emoji are left only where the
+   content is the person's own — the picture they chose for a category or a savings goal. */
+const ICONS = {
+  wallet: '<path d="M3 8a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2"/><path d="M3 8v9a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-2"/><path d="M20 10v5h-3.5a2.5 2.5 0 0 1 0-5z"/>',
+  bank: '<path d="M3.5 9.5 12 4.5l8.5 5"/><path d="M6 11v6M10 11v6M14 11v6M18 11v6"/><path d="M3.5 19.5h17"/>',
+  briefcase: '<rect x="3" y="7.5" width="18" height="11.5" rx="2"/><path d="M8.5 7.5V6A1.5 1.5 0 0 1 10 4.5h4A1.5 1.5 0 0 1 15.5 6v1.5"/><path d="M3 12.5h18"/>',
+  shield: '<path d="M12 4 5.5 6.4v4.8c0 3.9 2.7 7.1 6.5 8.6 3.8-1.5 6.5-4.7 6.5-8.6V6.4z"/>',
+  arrowDown: '<path d="M12 5v13"/><path d="m6.5 12.5 5.5 5.5 5.5-5.5"/>',
+  arrowUp: '<path d="M12 19V6"/><path d="m6.5 11.5 5.5-5.5 5.5 5.5"/>',
+  transfer: '<path d="M4 8h13"/><path d="m13.5 4.5 3.5 3.5-3.5 3.5"/><path d="M20 16H7"/><path d="m10.5 12.5-3.5 3.5 3.5 3.5"/>',
+  users: '<path d="M15.5 19v-1.5a3.5 3.5 0 0 0-3.5-3.5H6a3.5 3.5 0 0 0-3.5 3.5V19"/><circle cx="9" cy="8" r="3.2"/><path d="M21.5 19v-1.5a3.5 3.5 0 0 0-2.6-3.4"/><path d="M15.5 5.2a3.2 3.2 0 0 1 0 5.6"/>',
+  receipt: '<path d="M6 3.5h12v17l-2.4-1.6-2.4 1.6-2.4-1.6L8.4 20.5 6 18.9z"/><path d="M9.5 8.5h5M9.5 12.5h5"/>',
+  banknote: '<rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 10v4M18 10v4"/>',
+  handshake: '<path d="m11 18 2 2 3.5-3.5"/><path d="M3 11.5 7 7.5l3 2.5 2-1.5 2 1.5 3-2.5 4 4"/><path d="M7 7.5V16l4 2M17 7.5V16"/>',
+  bell: '<path d="M18 9a6 6 0 1 0-12 0c0 5-2 6.5-2 6.5h16S18 14 18 9"/><path d="M13.7 19.5a2 2 0 0 1-3.4 0"/>',
+  chart: '<path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 16.5v-4M12.5 16.5v-8M17 16.5v-5.5"/>',
+  tag: '<path d="M4 11.5V5.5A1.5 1.5 0 0 1 5.5 4h6l8.5 8.5a1.6 1.6 0 0 1 0 2.3l-5.7 5.7a1.6 1.6 0 0 1-2.3 0z"/><circle cx="8.5" cy="8.5" r="1.3"/>',
+  settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 14.5a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.3a2 2 0 1 1-4 0v-.2a1.6 1.6 0 0 0-2.8-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7h-.3a2 2 0 1 1 0-4h.2a1.6 1.6 0 0 0 1.1-2.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3h.1a1.6 1.6 0 0 0 1-1.5v-.3a2 2 0 1 1 4 0v.2a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7h.3a2 2 0 1 1 0 4h-.2a1.6 1.6 0 0 0-1.5 1"/>',
+  sheet: '<rect x="4" y="3.5" width="16" height="17" rx="2"/><path d="M4 9h16M4 15h16M10 9v11.5"/>',
+  home: '<path d="m4 10.5 8-6.5 8 6.5"/><path d="M6 9.5V20h12V9.5"/>',
+  list: '<path d="M8 6.5h12M8 12h12M8 17.5h12"/><path d="M4 6.5h.01M4 12h.01M4 17.5h.01"/>',
+  target: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/>',
+  check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+  close: '<path d="M6 6l12 12M18 6 6 18"/>',
+  clock: '<circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 1.8"/>',
+  inbox: '<path d="M3.5 13.5h4l1.5 2.5h6l1.5-2.5h4"/><path d="M5.8 5.5h12.4l2.3 8V18a1.5 1.5 0 0 1-1.5 1.5H5a1.5 1.5 0 0 1-1.5-1.5v-4.5z"/>',
+  alert: '<path d="M12 8.5v4.5"/><path d="M12 16.5h.01"/><circle cx="12" cy="12" r="8.5"/>',
+  wallet2: '<path d="M4 7.5h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4z"/><path d="M4 7.5v10"/>',
+  phone: '<rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/>',
+  laptop: '<rect x="4" y="5" width="16" height="10.5" rx="1.6"/><path d="M2.5 19h19"/>',
+  auto: '<path d="M12 4.5v3M12 16.5v3M4.5 12h3M16.5 12h3"/><circle cx="12" cy="12" r="3.2"/>'
+};
+/** One inline SVG, inheriting the surrounding text colour. */
+function ic(name, size) {
+  const p = ICONS[name];
+  if (!p) return '';
+  const s = size || 20;
+  return `<svg class="ico" viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${p}</svg>`;
+}
+/** Each account's icon comes from what the account is for, not from a stored emoji. */
+const PURPOSE_ICON = { personal: 'wallet', savings: 'bank', business: 'briefcase', guards: 'shield' };
+const accIcon = a => ic(a && PURPOSE_ICON[a.purpose] ? PURPOSE_ICON[a.purpose] : 'wallet');
+
 /* ════════════════════════ Accounts (4 virtual wallets) ════════════════════════
    Balance = opening balance + money in − money out. Each entry moves money in or out of exactly one
    account; a transfer moves it out of one and into another, so it never changes the combined total
@@ -810,16 +898,16 @@ const FALLBACK_ACCOUNTS = [
 ];
 const PURPOSE = {
   personal: { label: 'Salary account', types: ['income', 'expense', 'shared', 'lent', 'borrowed', 'repayment', 'transfer'], friends: true,
-    quick: [['income', '💵', 'Add money'], ['expense', '🧾', 'Spent'], ['shared', '👥', 'Split bill'], ['transfer', '⇄', 'Transfer']],
+    quick: [['income', 'banknote', 'Add money'], ['expense', 'receipt', 'Spent'], ['shared', 'users', 'Split bill'], ['transfer', 'transfer', 'Transfer']],
     sources: ['Salary', 'Refund', 'Interest', 'Gift', 'Other income'], defaultSource: 'Salary', payeeIn: 'From whom? (optional)', payeeOut: '' },
   savings: { label: 'Savings & backup', types: ['income', 'expense', 'transfer', 'lent', 'borrowed', 'repayment'], friends: true,
-    quick: [['income', '💵', 'Add money'], ['transfer', '⇄', 'Transfer'], ['expense', '🧾', 'Spent'], ['lent', '↗', 'Gave money']],
+    quick: [['income', 'banknote', 'Add money'], ['transfer', 'transfer', 'Transfer'], ['expense', 'receipt', 'Spent'], ['lent', 'arrowUp', 'Gave money']],
     sources: ['Deposit', 'Interest', 'Fixed deposit matured', 'Other credit'], defaultSource: 'Deposit', payeeIn: 'From whom? (optional)', payeeOut: '' },
   business: { label: 'Business account', types: ['income', 'expense', 'transfer'], friends: false,
-    quick: [['income', '🤝', 'Client payment', { source: 'Client payment' }], ['expense', '💼', 'Business expense'], ['transfer', '⇄', 'Transfer'], ['income', '💵', 'Other income', { source: 'Other business income' }]],
+    quick: [['income', 'handshake', 'Client payment', { source: 'Client payment' }], ['expense', 'briefcase', 'Business expense'], ['transfer', 'transfer', 'Transfer'], ['income', 'banknote', 'Other income', { source: 'Other business income' }]],
     sources: ['Client payment', 'Other business income', 'Refund'], defaultSource: 'Client payment', payeeIn: 'Client name', payeeOut: 'Paid to', defaultCat: 'Business Expenses' },
   guards: { label: 'Guard payments', types: ['expense', 'income', 'transfer'], friends: false,
-    quick: [['expense', '🛡️', 'Pay a guard'], ['income', '💵', 'Add funds'], ['transfer', '⇄', 'Transfer'], ['expense', '🧾', 'Other expense', { category: '__other' }]],
+    quick: [['expense', 'shield', 'Pay a guard'], ['income', 'banknote', 'Add funds'], ['transfer', 'transfer', 'Transfer'], ['expense', '🧾', 'Other expense', { category: '__other' }]],
     sources: ['Funds added', 'Other credit'], defaultSource: 'Funds added', payeeIn: 'From whom? (optional)', payeeOut: 'Guard name', defaultCat: 'Guard Payments' }
 };
 const acctOf = t => t.accountId || DEFAULT_ACC;
@@ -865,11 +953,13 @@ function updateAccBtn() {
   if (!S.d) { b.hidden = true; return; }
   b.hidden = false;
   const id = selAcc(), a = accById(id), bal = id === 'all' ? accSummary('all').balance : D.balances[id];
-  b.innerHTML = `<span class="acc-ic" style="background:${a ? a.color : 'var(--ink)'}">${a ? a.icon : '🏦'}</span><span class="grow ellipsis"><b>${esc(a ? a.name : 'All accounts')}</b><span class="acc-bal num">${money(bal)}</span></span><span class="chev">▾</span>`;
+  // No balance here: the hero directly below already shows it, and two copies of the same
+  // number side by side just makes the screen busier.
+  b.innerHTML = `<span class="acc-ic" style="--acc-c:${a ? a.color : 'var(--ink)'}">${a ? accIcon(a) : ic('bank')}</span><span class="grow ellipsis"><b>${esc(a ? a.name : 'All accounts')}</b></span><span class="chev">▾</span>`;
 }
 function openAccPicker() {
-  const opt = (id, icon, color, name, sub, bal) => `<button class="item acc-opt ${selAcc() === id ? 'on' : ''}" data-pick="${id}"><span class="acc-ic lg" style="background:${color}">${icon}</span><div class="grow"><div class="t">${esc(name)}</div><div class="s">${esc(sub)}</div></div><div class="amt num ${bal < 0 ? 'neg' : ''}">${money(bal)}</div></button>`;
-  const w = openSheet('Choose account', `<div class="list">${opt('all', '🏦', 'var(--ink)', 'All accounts', 'Overview of all four', accSummary('all').balance)}${D.accounts.map(a => opt(a.id, a.icon, a.color, a.name, PURPOSE[a.purpose].label, D.balances[a.id])).join('')}</div>
+  const opt = (id, icon, color, name, sub, bal) => `<button class="item acc-opt ${selAcc() === id ? 'on' : ''}" data-pick="${id}"><span class="acc-ic lg" style="--acc-c:${color}">${icon}</span><div class="grow"><div class="t">${esc(name)}</div><div class="s">${esc(sub)}</div></div><div class="amt num ${bal < 0 ? 'neg' : ''}">${money(bal)}</div></button>`;
+  const w = openSheet('Choose account', `<div class="list">${opt('all', ic('bank'), 'var(--ink)', 'All accounts', 'Everything together', accSummary('all').balance)}${D.accounts.map(a => opt(a.id, accIcon(a), a.color, a.name, PURPOSE[a.purpose].label, D.balances[a.id])).join('')}</div>
     <div class="hint">Everything you see and add follows the account you pick here.</div>`);
   $$('[data-pick]', w).forEach(b => b.onclick = () => { setAcc(b.dataset.pick); closeSheet(w); if (!['home', 'activity', 'reports'].includes(S.view)) go('home'); else render(); window.scrollTo(0, 0); });
 }
@@ -966,13 +1056,16 @@ function txnTitle(t) {
   if (t.type === 'transfer') return 'Transfer to ' + accShort(t.toAccountId);
   return c ? c.name : 'Transaction';
 }
+/** In a feed, what kind of entry it is reads faster than repeating the category,
+ *  which the row's subtitle already names. */
 function txnIcon(t) {
-  if (t.type === 'lent') return '↗';
-  if (t.type === 'borrowed') return '↙';
-  if (t.type === 'repayment') return t.direction === 'received' ? '⤵' : '⤴';
-  if (t.type === 'income') return '💵';
-  if (t.type === 'transfer') return '⇄';
-  const c = D.catMap[t.category]; return c ? c.icon : '🧾';
+  if (t.type === 'lent') return ic('arrowUp');
+  if (t.type === 'borrowed') return ic('arrowDown');
+  if (t.type === 'repayment') return ic(t.direction === 'received' ? 'arrowDown' : 'arrowUp');
+  if (t.type === 'income') return ic('banknote');
+  if (t.type === 'transfer') return ic('transfer');
+  if (t.type === 'shared') return ic('users');
+  return ic('receipt');
 }
 function friendName(id) { return id === 'me' ? 'You' : (D.friendMap[id] ? D.friendMap[id].name : 'Unknown'); }
 function itemsFor(txnId) { return S.d.ledger.filter(i => i.txnId === txnId); }
@@ -997,7 +1090,12 @@ function render() {
   const tabView = { friend: 'friends', reports: 'more', goals: 'home', budgets: 'more', categories: 'more', settings: 'more', reminders: 'more' }[v] || v;
   $$('.tab').forEach(b => b.classList.toggle('on', b.dataset.view === tabView));
   const sideView = v === 'friend' ? 'friends' : v;
-  $$('.snav').forEach(b => b.classList.toggle('on', b.dataset.view === sideView));
+  const SNAV_ICON = { home: 'home', activity: 'list', friends: 'users', reports: 'chart', budgets: 'target', reminders: 'bell', categories: 'tag', settings: 'settings' };
+  $$('.snav').forEach(b => {
+    b.classList.toggle('on', b.dataset.view === sideView);
+    const slot = $('.snav-i', b);
+    if (slot && !slot.firstChild) slot.innerHTML = ic(SNAV_ICON[b.dataset.view] || 'list', 18);
+  });
   const fn = { home: viewHome, reports: viewReports, goals: viewGoals, activity: viewActivity, friends: viewFriends, friend: viewFriend, more: viewMore, budgets: viewBudgets, categories: viewCategories, settings: viewSettings, reminders: viewReminders }[v];
   $('#view').innerHTML = fn();
   if (v === 'reports') mountHomeCharts();
@@ -1028,33 +1126,34 @@ function recentFor(accId, n) {
 function oweCards() {
   const T = D.totals;
   return `<div class="owe">
-    <button class="stat" data-tone="mint" data-act="nav" data-view="friends"><div class="k"><span class="si">💰</span>Friends owe you</div><div class="v num pos">${money(T.receivable)}</div>${T.overdueRecv > 0 ? `<div class="s neg">${money(T.overdueRecv)} is late</div>` : '<div class="s">to collect</div>'}</button>
-    <button class="stat" data-tone="coral" data-act="nav" data-view="friends"><div class="k"><span class="si">💸</span>You owe friends</div><div class="v num ${T.payable > 0 ? 'neg' : ''}">${money(T.payable)}</div><div class="s">to pay back</div></button>
+    <button class="stat" data-tone="mint" data-act="nav" data-view="friends"><div class="k"><span class="si">${ic('arrowDown', 17)}</span>Friends owe you</div><div class="v num pos">${money(T.receivable)}</div>${T.overdueRecv > 0 ? `<div class="s neg">${money(T.overdueRecv)} is late</div>` : '<div class="s">to collect</div>'}</button>
+    <button class="stat" data-tone="coral" data-act="nav" data-view="friends"><div class="k"><span class="si">${ic('arrowUp', 17)}</span>You owe friends</div><div class="v num ${T.payable > 0 ? 'neg' : ''}">${money(T.payable)}</div><div class="s">to pay back</div></button>
   </div>`;
 }
 function quickRow(items, accId) {
-  return `<div class="quick">${items.map(([k, i, l, pre]) => `<button data-act="quickAdd" data-type="${k}" data-acc="${accId || ''}" data-pre='${esc(JSON.stringify(pre || {}))}' data-tone="${TONES[k] || 'violet'}"><span>${i}</span>${esc(l)}</button>`).join('')}</div>`;
+  return `<div class="quick">${items.map(([k, i, l, pre]) => `<button data-act="quickAdd" data-type="${k}" data-acc="${accId || ''}" data-pre='${esc(JSON.stringify(pre || {}))}' data-tone="${TONES[k] || 'violet'}"><span>${ic(i, 19)}</span>${esc(l)}</button>`).join('')}</div>`;
 }
 function viewOverview() {
   const t = todayStr(), m = accSummary('all', monthStart(t), monthEnd(t)), tot = accSummary('all');
   const due = upcomingItems().filter(x => x.overdue || x.date <= addDays(t, 7));
+  // Deliberately spare: total, the four balances, what's owed, what's due, what's recent.
+  // The greeting, the per-account in/out pairs and the quick-action row were cut — the greeting
+  // says nothing, the extra figures live on each account's own page, and the + button already
+  // offers the same four actions.
   return `
-  <div class="hello">${greeting()}, ${esc(ownerName())} 👋</div>
   <div class="hero">
-    <div class="label">Total in all 4 accounts</div>
+    <div class="label">Total across your ${D.accounts.length} accounts</div>
     <div class="big num ${tot.balance < 0 ? 'neg' : ''}">${money(tot.balance)}</div>
-    <div class="sub">This month: <b>+${money(m.credits)}</b> in · <b>−${money(m.debits)}</b> out <span class="small">(moves between your accounts not counted)</span></div>
+    <div class="sub">${money(m.credits)} in and ${money(m.debits)} out this month</div>
   </div>
   <div class="wallets">${D.accounts.map(a => { const s = accSummary(a.id); return `<button class="wallet" data-act="openAcc" data-id="${a.id}" style="--acc:${a.color}">
-      <div class="row"><span class="acc-ic" style="background:${a.color}">${a.icon}</span><div class="grow"><div class="w-name ellipsis">${esc(a.name)}</div><div class="w-sub">${esc(PURPOSE[a.purpose].label)}</div></div><span class="chev">›</span></div>
-      <div class="w-bal num ${s.balance < 0 ? 'neg' : ''}">${money(s.balance)}</div>
-      <div class="w-flow"><span class="pos">+${money(s.credits)}</span><span class="neg">−${money(s.debits)}</span></div></button>`; }).join('')}</div>
-  ${quickRow([['income', '💵', 'Add money'], ['expense', '🧾', 'Spent'], ['transfer', '⇄', 'Transfer'], ['repayment', '🤝', 'Got money back']])}
+      <div class="row"><span class="acc-ic" style="--acc-c:${a.color}">${accIcon(a)}</span><div class="grow"><div class="w-name ellipsis">${esc(a.name)}</div></div><span class="chev">›</span></div>
+      <div class="w-bal num ${s.balance < 0 ? 'neg' : ''}">${money(s.balance)}</div></button>`; }).join('')}</div>
   ${oweCards()}
-  ${due.length ? `<div class="section"><h2>💰 Money to collect</h2><button class="link" data-act="nav" data-view="reminders">See all</button></div>${upcoming(4)}` : ''}
-  <div class="section"><h2>🕐 Recent</h2><button class="link" data-act="nav" data-view="activity">See all</button></div>
+  ${due.length ? `<div class="section"><h2>Money to collect</h2><button class="link" data-act="nav" data-view="reminders">See all</button></div>${upcoming(4)}` : ''}
+  <div class="section"><h2>Recent</h2><button class="link" data-act="nav" data-view="activity">See all</button></div>
   <div class="list">${recentFor('all', 5).map(x => txnRow(x)).join('') || `<div class="empty"><div class="e"></div>Nothing yet. Tap <b>+</b> to add your first entry.</div>`}</div>
-  <button class="btn block" style="margin-top:16px" data-act="nav" data-view="reports">📊 See reports & charts</button>
+  <button class="link" style="display:block;margin:16px auto 0" data-act="nav" data-view="reports">See reports and charts</button>
   <div style="height:8px"></div>`;
 }
 function groupRows(rows, keyFn, valFn) { const m = {}; rows.forEach(r => { const k = keyFn(r) || '—'; m[k] = r2((m[k] || 0) + valFn(r)); }); return Object.entries(m).sort((a, b) => b[1] - a[1]); }
@@ -1071,11 +1170,11 @@ function viewAccountHome(id) {
   if (a.purpose === 'business') {
     const clients = groupRows(monthFlows.filter(f => f.kind === 'income'), f => f.t.payee || f.t.source, f => f.amt);
     const spend = groupRows(monthFlows.filter(f => f.kind === 'expense'), f => (D.catMap[f.t.category] || {}).name || 'Other', f => -f.amt);
-    focus = `<div class="section"><h2>💼 Client payments · ${monthLabel(t.slice(0, 7), true)}</h2></div><div class="card">${barList(clients, 'var(--pos)', 'No client payments this month yet.')}</div>
-      <div class="section"><h2>📉 Business spending · ${monthLabel(t.slice(0, 7), true)}</h2></div><div class="card">${barList(spend, 'var(--neg)', 'No business spending this month.')}</div>`;
+    focus = `<div class="section"><h2>Client payments · ${monthLabel(t.slice(0, 7), true)}</h2></div><div class="card">${barList(clients, 'var(--pos)', 'No client payments this month yet.')}</div>
+      <div class="section"><h2>Business spending · ${monthLabel(t.slice(0, 7), true)}</h2></div><div class="card">${barList(spend, 'var(--neg)', 'No business spending this month.')}</div>`;
   } else if (a.purpose === 'guards') {
     const guards = groupRows(monthFlows.filter(f => f.kind === 'expense'), f => f.t.payee || (D.catMap[f.t.category] || {}).name, f => -f.amt);
-    focus = `<div class="section"><h2>🛡️ Paid to guards · ${monthLabel(t.slice(0, 7), true)}</h2></div><div class="card">${barList(guards, '#FF8A00', 'No guard payments this month yet.')}</div>`;
+    focus = `<div class="section"><h2>Paid to guards · ${monthLabel(t.slice(0, 7), true)}</h2></div><div class="card">${barList(guards, '#FF8A00', 'No guard payments this month yet.')}</div>`;
   } else {
     const spend = groupRows(consIn(from, to, id), c => c.cat, c => c.mine);
     focus = `<div class="section"><h2>Where money went · ${monthLabel(t.slice(0, 7), true)}</h2></div><div class="card">${barList(spend, 'var(--brand)', 'No spending this month yet.', k => { const c = D.catMap[k]; return c ? c.icon + ' ' + esc(c.name) : 'Other'; })}</div>`;
@@ -1090,7 +1189,7 @@ function viewAccountHome(id) {
   }
   return `
   <div class="hero acc-hero" style="--acc:${a.color}">
-    <div class="row"><span class="acc-ic lg" style="background:rgba(255,255,255,.9)">${a.icon}</span><div class="grow"><div class="label">${esc(a.name)}</div><div class="small" style="opacity:.75">${esc(P.label)}</div></div></div>
+    <div class="row"><span class="acc-ic lg" style="--acc-c:#fff;background:rgba(255,255,255,.16)!important">${accIcon(a)}</span><div class="grow"><div class="label">${esc(a.name)}</div><div class="small" style="opacity:.75">${esc(P.label)}</div></div></div>
     <div class="label" style="margin-top:12px">Balance now</div>
     <div class="big num">${money(all.balance)}</div>
     <div class="trio"><div><span>Opening</span><b class="num">${money(all.opening)}</b></div><div><span>Money in</span><b class="num">+${money(all.credits)}</b></div><div><span>Money out</span><b class="num">−${money(all.debits)}</b></div></div>
@@ -1098,8 +1197,8 @@ function viewAccountHome(id) {
   ${budget}
   ${quickRow(P.quick, id)}
   <div class="owe">
-    <div class="stat" data-tone="mint"><div class="k"><span class="si">⬇️</span>In this month</div><div class="v num pos">+${money(m.credits)}</div></div>
-    <div class="stat" data-tone="coral"><div class="k"><span class="si">⬆️</span>Out this month</div><div class="v num neg">−${money(m.debits)}</div></div>
+    <div class="stat" data-tone="mint"><div class="k"><span class="si">${ic('arrowDown', 17)}</span>In this month</div><div class="v num pos">+${money(m.credits)}</div></div>
+    <div class="stat" data-tone="coral"><div class="k"><span class="si">${ic('arrowUp', 17)}</span>Out this month</div><div class="v num neg">−${money(m.debits)}</div></div>
   </div>
   ${focus}
   ${P.friends && id === DEFAULT_ACC ? `<div class="section"><h2>Friends</h2></div>${oweCards()}` : ''}
@@ -1185,7 +1284,7 @@ function openGoalDetail(id) {
     <div class="bar" style="margin-top:10px;height:12px"><i style="width:${g.pct}%;background:${g.saved >= g.target ? 'var(--pos)' : 'var(--brand)'}"></i></div>
     <div class="small muted" style="margin-top:6px">${g.status === 'done' ? 'Finished ✅' : g.saved >= g.target ? '🎉 You have enough! Mark it done when you buy it.' : money(g.left) + ' more to go'}</div></div>
     <div class="section"><h2>Money added</h2></div>
-    <div class="list">${list.map(t => `<button class="item" data-act="txn" data-id="${t.id}"><div class="ic">💰</div><div class="grow"><div class="t">${fmtDate(t.date)}</div><div class="s">${t._pending ? 'Saving…' : 'Added'}</div></div><div class="amt num">${money(t.amount)}</div></button>`).join('') || '<div class="empty">No money added yet.</div>'}</div>`,
+    <div class="list">${list.map(t => `<button class="item" data-act="txn" data-id="${t.id}"><div class="ic">${ic('target')}</div><div class="grow"><div class="t">${fmtDate(t.date)}</div><div class="s">${t._pending ? 'Saving…' : 'Added'}</div></div><div class="amt num">${money(t.amount)}</div></button>`).join('') || '<div class="empty">No money added yet.</div>'}</div>`,
     { footer: g.status === 'active' ? `<button class="btn" data-edit>Edit</button><button class="btn" data-done>${g.saved >= g.target ? '✅ I bought it' : 'Mark done'}</button><button class="btn primary" data-add>+ Add</button>` : `<button class="btn danger" data-remove>Remove</button>` });
   const q = sel => $(sel, w);
   if (q('[data-edit]')) q('[data-edit]').onclick = () => { closeSheet(w); openGoalForm(g); };
@@ -1207,12 +1306,12 @@ function maybeDuePopup() {
   const recv = items.filter(i => i.direction === 'receivable'), pay = items.filter(i => i.direction === 'payable');
   const row = i => `<div class="item" style="cursor:default">${avatar(D.friendMap[i.friendId])}<div class="grow"><div class="t ellipsis">${esc(friendName(i.friendId))} ${i.direction === 'receivable' ? 'owes you' : '— you owe'} <b class="num">${money(i.outstanding)}</b></div><div class="s ellipsis">${esc(i.description || 'Money')} · ${i.dueDate < t ? 'was due ' : 'due '}${fmtDate(i.dueDate, { day: 'numeric', month: 'short' })}</div></div>
     <button class="mini-btn primary" data-pay="${i.friendId}" data-dir="${i.direction === 'receivable' ? 'received' : 'paid'}" data-target="${i.txnId}">${i.direction === 'receivable' ? 'Got it' : 'Paid'}</button></div>`;
-  const w = openSheet('🔔 Reminder', `${recv.length ? `<div class="big-note" style="padding-top:0"><div class="e">💰</div><h4>Time to collect ${money(sum(recv, i => i.outstanding))}</h4><p class="small muted">Ask them to pay you back today.</p></div><div class="list">${recv.map(row).join('')}</div>` : ''}
+  const w = openSheet('Reminder', `${recv.length ? `<div class="big-note" style="padding-top:0"><div class="e">${ic('arrowDown', 28)}</div><h4>Time to collect ${money(sum(recv, i => i.outstanding))}</h4><p class="small muted">Ask them to pay you back today.</p></div><div class="list">${recv.map(row).join('')}</div>` : ''}
     ${pay.length ? `<div class="section"><h2>You need to pay back</h2></div><div class="list">${pay.map(row).join('')}</div>` : ''}`,
-    { footer: `<button class="btn primary" data-ok>Remind me tomorrow</button>` });
+    { footer: `<button class="btn primary" data-ok>Remind me tomorrow</button>`, onClose: () => seen() });
+  // Count it as seen however it's dismissed — otherwise swiping it away makes it reappear after every save.
   const seen = () => { try { localStorage.setItem('hisaab.popup', JSON.stringify({ day: t, count: items.length })); } catch (e) { } };
-  $('[data-ok]', w).onclick = () => { seen(); closeSheet(w); };
-  $('[data-close]', w).addEventListener('click', seen);
+  $('[data-ok]', w).onclick = () => closeSheet(w);
   $$('[data-pay]', w).forEach(b => b.onclick = () => { seen(); openSettle(b.dataset.pay, b.dataset.dir, b.dataset.target); });
 }
 
@@ -1267,17 +1366,17 @@ function viewReports() {
 function insights(R, id, rows, spent, s, inBy, outBy) {
   const out = [], lbl = R.label.toLowerCase();
   const top = groupRows(rows.filter(c => c.mine > 0), c => c.cat, c => c.mine)[0];
-  if (top && spent > 0) out.push(['🍕', `${(D.catMap[top[0]] || {}).name || 'One type'} is ${pct(top[1], spent).toFixed(0)}% of your spending ${lbl}.`]);
-  if (inBy[0]) out.push(['⬇️', `Most money came from ${inBy[0][0].toLowerCase()} (${money(inBy[0][1])}) ${lbl}.`]);
-  if (s.credits || s.debits) out.push([s.credits >= s.debits ? '🟢' : '🔴', s.credits >= s.debits ? `${money(r2(s.credits - s.debits))} more came in than went out ${lbl}.` : `${money(r2(s.debits - s.credits))} more went out than came in ${lbl}.`]);
+  if (top && spent > 0) out.push(['chart', `${(D.catMap[top[0]] || {}).name || 'One type'} is ${pct(top[1], spent).toFixed(0)}% of your spending ${lbl}.`]);
+  if (inBy[0]) out.push(['arrowDown', `Most money came from ${inBy[0][0].toLowerCase()} (${money(inBy[0][1])}) ${lbl}.`]);
+  if (s.credits || s.debits) out.push([s.credits >= s.debits ? 'arrowDown' : 'arrowUp', s.credits >= s.debits ? `${money(r2(s.credits - s.debits))} more came in than went out ${lbl}.` : `${money(r2(s.debits - s.credits))} more went out than came in ${lbl}.`]);
   if (id === 'all' || id === DEFAULT_ACC) {
     const owing = Object.values(D.fr).filter(f => f.receivable > 0.004);
-    if (owing.length) out.push(['💸', `${money(D.totals.receivable)} is still to come back from ${owing.length} friend${owing.length > 1 ? 's' : ''}.`]);
+    if (owing.length) out.push(['handshake', `${money(D.totals.receivable)} is still to come back from ${owing.length} friend${owing.length > 1 ? 's' : ''}.`]);
   }
   const neg = D.accounts.filter(a => D.balances[a.id] < 0);
-  if (neg.length) out.push(['⚠️', `${neg.map(a => a.name).join(', ')} ${neg.length > 1 ? 'are' : 'is'} below ₹0. Check if an entry is missing.`]);
+  if (neg.length) out.push(['alert', `${neg.map(a => a.name).join(', ')} ${neg.length > 1 ? 'are' : 'is'} below ₹0. Check if an entry is missing.`]);
   if (!out.length) return `<div class="empty">Tips appear once you add a few entries.</div>`;
-  return out.map(([i, t]) => `<div class="insight"><span>${i}</span><span>${esc(t)}</span></div>`).join('');
+  return out.map(([i, t]) => `<div class="insight"><span>${ic(i, 17)}</span><span>${esc(t)}</span></div>`).join('');
 }
 function mountHomeCharts() {
   if (!window.Chart) return;
@@ -1344,7 +1443,7 @@ function budgetBars(ms) {
 function friendBalances(limit) {
   const list = Object.values(D.fr).filter(f => D.friendMap[f.id] && (Math.abs(f.net) > 0.004 || f.receivable > 0 || f.payable > 0))
     .sort((a, b) => (b.overdue > 0) - (a.overdue > 0) || Math.abs(b.net) - Math.abs(a.net));
-  if (!list.length) return `<div class="list"><div class="empty"><div class="e">🤝</div>All settled up.</div></div>`;
+  if (!list.length) return `<div class="list"><div class="empty"><div class="e">${ic('handshake', 26)}</div>All settled up.</div></div>`;
   return `<div class="list">${list.slice(0, limit || 99).map(f => {
     const fr = D.friendMap[f.id];
     return `<div class="item" data-act="friend" data-id="${f.id}">${avatar(fr)}<div class="grow"><div class="t ellipsis">${esc(fr.name)}</div>
@@ -1371,15 +1470,16 @@ function upcomingItems() {
 }
 function upcoming(limit) {
   const items = upcomingItems().slice(0, limit || 999);
-  if (!items.length) return `<div class="list"><div class="empty"><div class="e">📭</div>Nothing due. Add a reminder date when you lend money.</div></div>`;
+  if (!items.length) return `<div class="list"><div class="empty"><div class="e">${ic('inbox', 26)}</div>Nothing due. Add a reminder date when you lend money.</div></div>`;
   return `<div class="list">${items.map(x => {
     const when = x.kind === 'shared' ? 'since ' + fmtDate(x.date, { day: 'numeric', month: 'short' }) : (x.overdue ? 'was due ' : 'due ') + fmtDate(x.date, { day: 'numeric', month: 'short' });
     const actions = x.kind === 'reminder'
-      ? `<button class="mini-btn" data-act="remDone" data-id="${x.r.id}" title="Mark complete">✓</button><button class="mini-btn" data-act="remResched" data-id="${x.r.id}" title="Reschedule">⏱</button><button class="mini-btn" data-act="remDismiss" data-id="${x.r.id}" title="Dismiss">✕</button>`
-      : `<button class="mini-btn" data-act="settle" data-id="${x.friendId}" data-dir="${x.dir === 'receivable' ? 'received' : 'paid'}">${x.dir === 'receivable' ? 'Got paid' : 'Paid'}</button><button class="mini-btn" data-act="remNew" data-txn="${x.i.txnId}" data-friend="${x.friendId}" data-title="${esc(x.title)}">🔔</button>`;
-    return `<div class="item" style="cursor:default"><div class="ic">${x.kind === 'reminder' ? '🔔' : x.kind === 'due' ? '📅' : '🧾'}</div>
-      <div class="grow"><div class="t ellipsis">${esc(x.title)}</div><div class="s ellipsis">${x.overdue ? '<span class="tag overdue">Late</span> ' : ''}${esc(when)}${x.amount != null ? ' · <b class="num">' + money(x.amount) + '</b>' : ''}${x.sub ? ' · ' + esc(x.sub) : ''}</div></div>
-      <div class="row" style="gap:6px">${actions}</div></div>`;
+      ? `<button class="mini-btn icon-btn" data-act="remDone" data-id="${x.r.id}" title="Mark complete" aria-label="Mark complete">${ic('check', 16)}</button><button class="mini-btn icon-btn" data-act="remResched" data-id="${x.r.id}" title="Reschedule" aria-label="Reschedule">${ic('clock', 16)}</button><button class="mini-btn icon-btn" data-act="remDismiss" data-id="${x.r.id}" title="Dismiss" aria-label="Dismiss">${ic('close', 16)}</button>`
+      : `<button class="mini-btn" data-act="settle" data-id="${x.friendId}" data-dir="${x.dir === 'receivable' ? 'received' : 'paid'}">${x.dir === 'receivable' ? 'Got paid' : 'Paid'}</button><button class="mini-btn icon-btn" data-act="remNew" data-txn="${x.i.txnId}" data-friend="${x.friendId}" data-title="${esc(x.title)}" title="Add a reminder" aria-label="Add a reminder">${ic('bell', 16)}</button>`;
+    return `<div class="item due-row" style="cursor:default"><div class="ic">${ic(x.kind === 'reminder' ? 'bell' : x.kind === 'due' ? 'clock' : 'receipt')}</div>
+      <div class="grow"><div class="t ellipsis">${esc(x.title)}</div><div class="s ellipsis">${x.overdue ? '<span class="tag overdue">Late</span> ' : ''}${esc(when)}${x.sub ? ' · ' + esc(x.sub) : ''}</div></div>
+      ${x.amount != null ? `<div class="due-amt num">${money(x.amount)}</div>` : ''}
+      <div class="row due-actions">${actions}</div></div>`;
   }).join('')}</div>`;
 }
 function openCatTxns(cid) {
@@ -1418,7 +1518,7 @@ function txnSub(t) {
 function txnRow(t, override) {
   const a = txnAmount(t);
   const overdue = (t.type === 'lent' || t.type === 'borrowed') && itemsFor(t.id).some(i => i.overdue);
-  return `<button class="item" data-act="txn" data-id="${t.id}"><div class="ic">${esc(txnIcon(t))}</div>
+  return `<button class="item" data-act="txn" data-id="${t.id}"><div class="ic">${txnIcon(t)}</div>
     <div class="grow"><div class="t ellipsis">${esc(txnTitle(t))}${t._pending ? ' <span class="tag saving">Saving</span>' : ''}${t.recurring && t.recurring.enabled ? ' <span class="tag neutral">↻</span>' : ''}${overdue ? ' <span class="tag overdue">Late</span>' : ''}</div><div class="s ellipsis">${esc(txnSub(t))}</div></div>
     <div class="amt num ${a.cls}">${override != null ? money(override) : a.v}<div class="s small muted">${override != null ? '' : esc(a.s)}</div></div></button>`;
 }
@@ -1446,7 +1546,7 @@ function viewActivity() {
     <select class="in" data-change="actCat"><option value="">All types</option>${D.topCats.map(c => `<option value="${c.id}" ${A.cat === c.id ? 'selected' : ''}>${c.icon} ${esc(c.name)}</option>`).join('')}</select>
   </div>
   ${list.length ? `<div class="act-sum"><span>${list.length} entr${list.length === 1 ? 'y' : 'ies'}</span><span class="pos num">+${money(inSum)}</span><span class="neg num">−${money(outSum)}</span></div>` : ''}
-  <div id="actList">${list.length ? Object.keys(groups).map(dt => `<div class="day">${esc(fmtDay(dt))}</div><div class="list">${groups[dt].map(x => txnRow(x)).join('')}</div>`).join('') : `<div class="list" style="margin-top:14px"><div class="empty"><div class="e">🗂️</div>${S.d.transactions.length ? 'Nothing matches these filters.' : 'No entries yet. Tap + to add your first one.'}</div></div>`}</div>
+  <div id="actList">${list.length ? Object.keys(groups).map(dt => `<div class="day">${esc(fmtDay(dt))}</div><div class="list">${groups[dt].map(x => txnRow(x)).join('')}</div>`).join('') : `<div class="list" style="margin-top:14px"><div class="empty"><div class="e">${ic('list', 26)}</div>${S.d.transactions.length ? 'Nothing matches these filters.' : 'No entries yet. Tap + to add your first one.'}</div></div>`}</div>
   <div style="height:10px"></div>`;
 }
 
@@ -1457,8 +1557,8 @@ function viewFriends() {
     .sort((a, b) => (b.active - a.active) || Math.abs((D.fr[b.id] || {}).net || 0) - Math.abs((D.fr[a.id] || {}).net || 0) || a.name.localeCompare(b.name));
   const T = D.totals;
   return `<div class="stats" style="margin-top:0">
-    <div class="stat" data-tone="mint" style="cursor:default"><div class="k"><span class="si">💰</span>Owed to you</div><div class="v num pos">${money(T.receivable)}</div></div>
-    <div class="stat" data-tone="coral" style="cursor:default"><div class="k"><span class="si">💸</span>You owe</div><div class="v num ${T.payable > 0 ? 'neg' : ''}">${money(T.payable)}</div></div></div>
+    <div class="stat" data-tone="mint" style="cursor:default"><div class="k"><span class="si">${ic('arrowDown', 17)}</span>Owed to you</div><div class="v num pos">${money(T.receivable)}</div></div>
+    <div class="stat" data-tone="coral" style="cursor:default"><div class="k"><span class="si">${ic('arrowUp', 17)}</span>You owe</div><div class="v num ${T.payable > 0 ? 'neg' : ''}">${money(T.payable)}</div></div></div>
   <div class="row" style="margin-top:14px"><div class="search grow"><input class="in" placeholder="Search friends" value="${esc(S.friendQ)}" data-input="friendQ" id="friendQ"></div><button class="btn" data-act="newFriend" style="padding:11px 14px">+ Add</button></div>
   <label class="toggle small"><span class="muted">Show deactivated friends</span><span class="switch"><input type="checkbox" ${S.showInactive ? 'checked' : ''} data-change="showInactive"><span></span></span></label>
   <div class="list">${list.map(f => {
@@ -1466,7 +1566,7 @@ function viewFriends() {
     return `<button class="item" data-act="friend" data-id="${f.id}" style="${f.active ? '' : 'opacity:.55'}">${avatar(f)}<div class="grow"><div class="t ellipsis">${esc(f.name)} ${f.active ? '' : '<span class="tag neutral">Inactive</span>'}</div>
       <div class="s ellipsis">${Math.abs(b.net) < 0.005 ? 'All clear' : b.net > 0 ? 'owes you' : 'you owe'} ${b.overdue > 0 ? '<span class="tag overdue">late</span>' : ''}</div></div>
       <div class="amt num ${b.net > 0 ? 'pos' : b.net < 0 ? 'neg' : 'muted'}">${Math.abs(b.net) < 0.005 ? '—' : money(Math.abs(b.net))}</div></button>`;
-  }).join('') || `<div class="empty"><div class="e">👋</div>${S.d.friends.length ? 'No friends match.' : 'Add the people you split bills or lend money with.'}</div>`}</div>`;
+  }).join('') || `<div class="empty"><div class="e">${ic('users', 26)}</div>${S.d.friends.length ? 'No friends match.' : 'Add the people you split bills or lend money with.'}</div>`}</div>`;
 }
 function viewFriend() {
   const f = D.friendMap[S.params.id];
@@ -1491,18 +1591,18 @@ function viewFriend() {
       <button class="mini-btn" data-act="addFor" data-type="borrowed" data-id="${f.id}">Borrow</button>
     </div></div>
   <div class="stats">
-    <div class="stat" data-tone="mint" style="cursor:default"><div class="k"><span class="si">💰</span>Owes you</div><div class="v num pos">${money(b.receivable)}</div><div class="s">${money(b.loanRecv)} lent · ${money(r2(b.receivable - b.loanRecv))} bills</div></div>
-    <div class="stat" data-tone="coral" style="cursor:default"><div class="k"><span class="si">💸</span>You owe</div><div class="v num ${b.payable > 0 ? 'neg' : ''}">${money(b.payable)}</div><div class="s">${money(b.loanPay)} borrowed · ${money(r2(b.payable - b.loanPay))} bills</div></div>
-    <div class="stat" data-tone="sky" style="cursor:default"><div class="k"><span class="si">🤝</span>Lent to them</div><div class="v num">${money(b.lentTotal)}</div><div class="s">all time</div></div>
-    <div class="stat" data-tone="sun" style="cursor:default"><div class="k"><span class="si">🪙</span>Borrowed</div><div class="v num">${money(b.borrowedTotal)}</div><div class="s">all time</div></div>
-    <div class="stat" data-tone="violet" style="cursor:default"><div class="k"><span class="si">🧾</span>Shared bills</div><div class="v num">${money(b.sharedTotal)}</div><div class="s">${b.sharedCount} expense${b.sharedCount === 1 ? '' : 's'} together</div></div>
-    <div class="stat" data-tone="pink" style="cursor:default"><div class="k"><span class="si">✅</span>Paid back</div><div class="v num">${reps.length}</div><div class="s">${money(sum(reps, r => r.amount))} total</div></div>
+    <div class="stat" data-tone="mint" style="cursor:default"><div class="k"><span class="si">${ic('arrowDown', 17)}</span>Owes you</div><div class="v num pos">${money(b.receivable)}</div><div class="s">${money(b.loanRecv)} lent · ${money(r2(b.receivable - b.loanRecv))} bills</div></div>
+    <div class="stat" data-tone="coral" style="cursor:default"><div class="k"><span class="si">${ic('arrowUp', 17)}</span>You owe</div><div class="v num ${b.payable > 0 ? 'neg' : ''}">${money(b.payable)}</div><div class="s">${money(b.loanPay)} borrowed · ${money(r2(b.payable - b.loanPay))} bills</div></div>
+    <div class="stat" data-tone="sky" style="cursor:default"><div class="k"><span class="si">${ic('arrowUp', 17)}</span>Lent to them</div><div class="v num">${money(b.lentTotal)}</div><div class="s">all time</div></div>
+    <div class="stat" data-tone="sun" style="cursor:default"><div class="k"><span class="si">${ic('arrowDown', 17)}</span>Borrowed</div><div class="v num">${money(b.borrowedTotal)}</div><div class="s">all time</div></div>
+    <div class="stat" data-tone="violet" style="cursor:default"><div class="k"><span class="si">${ic('users', 17)}</span>Shared bills</div><div class="v num">${money(b.sharedTotal)}</div><div class="s">${b.sharedCount} expense${b.sharedCount === 1 ? '' : 's'} together</div></div>
+    <div class="stat" data-tone="pink" style="cursor:default"><div class="k"><span class="si">${ic('check', 17)}</span>Paid back</div><div class="v num">${reps.length}</div><div class="s">${money(sum(reps, r => r.amount))} total</div></div>
   </div>
   </div><div class="fcol"><div class="section"><h2>Open balances</h2></div>
-  <div class="list">${open.length ? open.map(i => `<button class="item" data-act="txn" data-id="${i.txnId}"><div class="ic">${i.kind === 'loan' ? (i.direction === 'receivable' ? '↗' : '↙') : '🧾'}</div><div class="grow"><div class="t ellipsis">${esc(i.description || (i.kind === 'loan' ? (i.direction === 'receivable' ? 'Money lent' : 'Money borrowed') : 'Shared bill'))}</div>
+  <div class="list">${open.length ? open.map(i => `<button class="item" data-act="txn" data-id="${i.txnId}"><div class="ic">${ic(i.kind === 'loan' ? (i.direction === 'receivable' ? 'arrowUp' : 'arrowDown') : 'users')}</div><div class="grow"><div class="t ellipsis">${esc(i.description || (i.kind === 'loan' ? (i.direction === 'receivable' ? 'Money lent' : 'Money borrowed') : 'Shared bill'))}</div>
     <div class="s">${i.direction === 'receivable' ? 'They owe' : 'You owe'} · ${fmtDate(i.date)}${i.dueDate ? ' · due ' + fmtDate(i.dueDate) : ''} ${i.overdue ? '<span class="tag overdue">Late</span>' : ''} ${i.settled > 0 ? '<span class="tag neutral">Partly paid back</span>' : ''}</div></div>
     <div class="amt num ${i.direction === 'receivable' ? 'pos' : 'neg'}">${money(i.outstanding)}<div class="s small muted">of ${money(i.original)}</div></div></button>`).join('') : '<div class="empty">No open balances.</div>'}</div>
-  ${rems.length ? `<div class="section"><h2>Reminders</h2></div><div class="list">${rems.map(r => `<div class="item" style="cursor:default"><div class="ic">🔔</div><div class="grow"><div class="t ellipsis">${esc(r.title)}</div><div class="s">${r.dueDate < todayStr() ? '<span class="tag overdue">Late</span> ' : ''}${fmtDate(r.dueDate)} · ${esc(r.frequency)}</div></div><div class="row" style="gap:6px"><button class="mini-btn" data-act="remDone" data-id="${r.id}">✓</button><button class="mini-btn" data-act="remResched" data-id="${r.id}">⏱</button><button class="mini-btn" data-act="remDismiss" data-id="${r.id}">✕</button></div></div>`).join('')}</div>` : ''}
+  ${rems.length ? `<div class="section"><h2>Reminders</h2></div><div class="list">${rems.map(r => `<div class="item due-row" style="cursor:default"><div class="ic">${ic('bell')}</div><div class="grow"><div class="t ellipsis">${esc(r.title)}</div><div class="s">${r.dueDate < todayStr() ? '<span class="tag overdue">Late</span> ' : ''}${fmtDate(r.dueDate)} · ${esc(r.frequency)}</div></div><div class="row due-actions"><button class="mini-btn icon-btn" data-act="remDone" data-id="${r.id}" title="Mark complete" aria-label="Mark complete">${ic('check', 16)}</button><button class="mini-btn icon-btn" data-act="remResched" data-id="${r.id}" title="Reschedule" aria-label="Reschedule">${ic('clock', 16)}</button><button class="mini-btn icon-btn" data-act="remDismiss" data-id="${r.id}" title="Dismiss" aria-label="Dismiss">${ic('close', 16)}</button></div></div>`).join('')}</div>` : ''}
   <div class="section"><h2>History</h2></div>
   <div class="list">${txns.map(t => txnRow(t)).join('') || '<div class="empty">No transactions with this friend yet.</div>'}</div>
   ${f.notes ? `<div class="section"><h2>Notes</h2></div><div class="card small">${esc(f.notes)}</div>` : ''}
@@ -1511,9 +1611,9 @@ function viewFriend() {
 
 /* ── More, budgets, categories, settings, reminders ── */
 function viewMore() {
-  const links = [['reports', '📊', 'Reports', 'Money in and out, per account'], ['settings', '🏦', 'Accounts & opening balances', 'Set the starting balance of each account'], ['budgets', '💰', 'Budget (HDFC Personal)', 'Optional monthly spending limit'], ['reminders', '🔔', 'Reminders', 'Who needs to pay you, and when'], ['categories', '🏷️', 'Spending types', 'Food, travel, shopping and more'], ['settings', '⚙️', 'Settings', 'Your name, reminder email, layout']];
-  return `<div class="list">${links.map(([v, i, t, s]) => `<button class="item" data-act="nav" data-view="${v}"><div class="ic" style="font-size:22px;width:36px;text-align:center">${i}</div><div class="grow"><div class="t">${t}</div><div class="s">${s}</div></div><span class="muted">›</span></button>`).join('')}
-  <a class="item" href="${esc(S.d.spreadsheetUrl)}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><div class="ic" style="font-size:22px;width:36px;text-align:center">📋</div><div class="grow"><div class="t">Open Google Sheet</div><div class="s">Your data lives here</div></div><span class="muted">↗</span></a></div>
+  const links = [['reports', 'chart', 'Reports', 'Money in and out, per account'], ['settings', 'bank', 'Accounts and opening balances', 'Set the starting balance of each account'], ['budgets', 'target', 'Budget (HDFC Personal)', 'Optional monthly spending limit'], ['reminders', 'bell', 'Reminders', 'Who needs to pay you, and when'], ['categories', 'tag', 'Spending types', 'Food, travel, shopping and more'], ['settings', 'settings', 'Settings', 'Your name, reminder email, layout']];
+  return `<div class="list">${links.map(([v, i, t, s]) => `<button class="item" data-act="nav" data-view="${v}"><div class="ic">${ic(i)}</div><div class="grow"><div class="t">${t}</div><div class="s">${s}</div></div><span class="muted">›</span></button>`).join('')}
+  <a class="item" href="${esc(S.d.spreadsheetUrl)}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><div class="ic">${ic('sheet')}</div><div class="grow"><div class="t">Open Google Sheet</div><div class="s">Your data lives here</div></div><span class="muted">↗</span></a></div>
   <div class="section"><h2>Quick help</h2></div>
   <div class="card" style="line-height:1.6">
     <div class="hint" style="margin:0 0 8px;font-weight:600">How this app works</div>
@@ -1538,7 +1638,7 @@ function viewBudgets() {
     <div class="kv"><span>Average per day</span><span class="num">${money(ms.avgDaily)}</span></div>
     <div class="kv"><span>If you keep going like this <span class="tag est">Guess</span></span><span class="num">${money(ms.projected)}</span></div>
   </div>
-  ${budgetAlerts(ms).map(a => `<div class="alert ${a.lvl}">${a.lvl === 'neg' ? '⛔' : '⚠️'} ${esc(a.msg)}</div>`).join('')}
+  ${budgetAlerts(ms).map(a => `<div class="alert ${a.lvl}">${ic('alert', 16)} ${esc(a.msg)}</div>`).join('')}
   <div class="section"><h2>Set budget</h2></div>
   <div class="card" id="budgetForm">
     <div class="f" style="margin-top:0"><label>Monthly budget for HDFC Personal</label><input class="in num" type="number" inputmode="decimal" min="0" step="0.01" data-budget="overall" value="${B || ''}" placeholder="Leave empty for no budget"></div>
@@ -1558,7 +1658,7 @@ function viewSettings() {
   return `<div class="section" style="margin-top:0"><h2>Accounts & opening balances</h2></div>
   <div class="card" id="accForm">
     <div class="hint" style="margin:0 0 6px">Opening balance = the money in the account before you started using this app. Balance now = opening + money in − money out.</div>
-    ${D.accounts.map(a => `<div class="acc-edit"><span class="acc-ic" style="background:${a.color}">${a.icon}</span><div class="grow"><input class="in" data-accname="${a.id}" value="${esc(a.name)}" maxlength="40" aria-label="Account name"><div class="tiny muted" style="margin-top:4px">${esc(PURPOSE[a.purpose].label)} · now ${money(D.balances[a.id])}</div></div><div><label class="tiny muted" for="ob_${a.id}">Opening</label><input class="in num" id="ob_${a.id}" type="number" inputmode="decimal" step="0.01" data-accopen="${a.id}" value="${a.openingBalance || 0}"></div></div>`).join('')}
+    ${D.accounts.map(a => `<div class="acc-edit"><span class="acc-ic" style="--acc-c:${a.color}">${accIcon(a)}</span><div class="grow"><input class="in" data-accname="${a.id}" value="${esc(a.name)}" maxlength="40" aria-label="Account name"><div class="tiny muted" style="margin-top:4px">${esc(PURPOSE[a.purpose].label)} · now ${money(D.balances[a.id])}</div></div><div><label class="tiny muted" for="ob_${a.id}">Opening</label><input class="in num" id="ob_${a.id}" type="number" inputmode="decimal" step="0.01" data-accopen="${a.id}" value="${a.openingBalance || 0}"></div></div>`).join('')}
     <div id="accErr"></div>
     <button class="btn primary block" style="margin-top:12px" data-act="saveAccounts">Save accounts</button>
   </div>
@@ -1598,7 +1698,7 @@ function viewReminders() {
   const closed = all.filter(r => r.status !== 'active').slice(-15).reverse();
   return `<div class="row" style="margin-bottom:12px"><div class="grow small muted">Email reminders go out daily for anything due. Loans with a reminder date appear here automatically.</div><button class="btn" data-act="remNew" style="padding:10px 14px">+ New</button></div>
   ${upcoming()}
-  ${closed.length ? `<div class="section"><h2>Completed & dismissed</h2></div><div class="list">${closed.map(r => `<div class="item" style="cursor:default;opacity:.7"><div class="ic">${r.status === 'done' ? '✅' : '🚫'}</div><div class="grow"><div class="t ellipsis">${esc(r.title)}</div><div class="s">${fmtDate(r.dueDate)} · ${esc(r.status)}</div></div><button class="mini-btn" data-act="remResched" data-id="${r.id}">Reopen</button></div>`).join('')}</div>` : ''}`;
+  ${closed.length ? `<div class="section"><h2>Completed & dismissed</h2></div><div class="list">${closed.map(r => `<div class="item" style="cursor:default;opacity:.7"><div class="ic">${ic(r.status === 'done' ? 'check' : 'close')}</div><div class="grow"><div class="t ellipsis">${esc(r.title)}</div><div class="s">${fmtDate(r.dueDate)} · ${esc(r.status)}</div></div><button class="mini-btn" data-act="remResched" data-id="${r.id}">Reopen</button></div>`).join('')}</div>` : ''}`;
 }
 
 /* ════════════════════════ Layout: auto-detect or choose Phone / Laptop ════════════════════════ */
@@ -1615,7 +1715,7 @@ function applyLayout(rerender) {
   // Laptop layout forced on a small screen: render a 1200px-wide page the phone zooms to fit ("desktop site").
   if (vpMeta) vpMeta.setAttribute('content', mode === 'laptop' && screen.width < 1000 ? 'width=1200' : vpDefault);
   const b = $('#layBtn');
-  if (b) b.innerHTML = (lap ? '💻' : '📱') + '<span class="lay-t">' + (mode === 'auto' ? 'Auto' : lap ? 'Laptop' : 'Phone') + '</span>';
+  if (b) b.innerHTML = ic(lap ? 'laptop' : 'phone', 17) + '<span class="lay-t">' + (mode === 'auto' ? 'Auto' : lap ? 'Laptop' : 'Phone') + '</span>';
   if (changed && rerender && S.d) { S.stack = []; render(); }
 }
 function setLayout(mode) {
@@ -1625,8 +1725,8 @@ function setLayout(mode) {
 }
 function openLayoutPicker() {
   const m = layoutMode(), detected = wideMQ.matches ? 'laptop' : 'phone';
-  const opts = [['auto', '✨', 'Automatic', 'Detects your screen. Right now: ' + detected + '.'], ['phone', '📱', 'Phone', 'Bottom tabs, one column, big touch targets.'], ['laptop', '💻', 'Laptop', 'Sidebar, two-column dashboard, keyboard shortcuts.']];
-  const w = openSheet('Layout', `<div class="lay-opts">${opts.map(([k, i, t, d]) => `<button class="lay-opt ${m === k ? 'on' : ''}" data-mode="${k}"><span class="ic">${i}</span><span class="grow"><b>${t}${m === k ? ' ✓' : ''}</b><span class="d">${d}</span></span></button>`).join('')}</div><div class="hint">Saved on this device only, so your phone and laptop can differ.</div>`);
+  const opts = [['auto', 'auto', 'Automatic', 'Detects your screen. Right now: ' + detected + '.'], ['phone', 'phone', 'Phone', 'Bottom tabs, one column, big touch targets.'], ['laptop', 'laptop', 'Laptop', 'Sidebar, two-column dashboard, keyboard shortcuts.']];
+  const w = openSheet('Layout', `<div class="lay-opts">${opts.map(([k, i, t, d]) => `<button class="lay-opt ${m === k ? 'on' : ''}" data-mode="${k}"><span class="ic">${ic(i)}</span><span class="grow"><b>${t}${m === k ? ' ✓' : ''}</b><span class="d">${d}</span></span></button>`).join('')}</div><div class="hint">Saved on this device only, so your phone and laptop can differ.</div>`);
   $$('.lay-opt', w).forEach(b => b.onclick = () => { closeSheet(w); setLayout(b.dataset.mode); });
 }
 if (wideMQ.addEventListener) wideMQ.addEventListener('change', () => applyLayout(true)); else wideMQ.addListener(() => applyLayout(true));
@@ -1641,10 +1741,12 @@ function openSheet(title, body, opts = {}) {
   wrap.addEventListener('click', e => { if (e.target === wrap || e.target.closest('[data-close]')) closeSheet(wrap); });
   $('#sheets').appendChild(wrap);
   sheetStack.push(wrap);
+  // Runs however the sheet is dismissed: ✕, footer button, Escape, or a tap on the backdrop.
+  if (opts.onClose) wrap._onClose = opts.onClose;
   if (opts.mount) opts.mount(wrap);
   return wrap;
 }
-function closeSheet(w) { w = w || sheetStack[sheetStack.length - 1]; if (!w) return; const i = sheetStack.indexOf(w); if (i > -1) sheetStack.splice(i, 1); w.remove(); }
+function closeSheet(w) { w = w || sheetStack[sheetStack.length - 1]; if (!w) return; const i = sheetStack.indexOf(w); if (i > -1) sheetStack.splice(i, 1); const fn = w._onClose; w._onClose = null; w.remove(); if (fn) { try { fn(); } catch (e) { } } }
 function closeAllSheets() { while (sheetStack.length) closeSheet(); }
 function confirmSheet(title, msg, okLabel, danger) {
   return new Promise(res => {
@@ -1655,7 +1757,7 @@ function confirmSheet(title, msg, okLabel, danger) {
 }
 
 /* ── Add: type picker ── */
-const TYPE_TILES = [['income', '💵', 'Add money', 'Salary, client payment, refund…'], ['expense', '🧾', 'I spent money', 'Food, bills, guard pay…'], ['transfer', '⇄', 'Move money', 'Between your own accounts'], ['shared', '👥', 'Split a bill', 'Share a cost with friends'], ['lent', '↗', 'I gave money', 'Money lent to a friend'], ['borrowed', '↙', 'I took money', 'Money a friend gave you'], ['repayment', '🤝', 'Money returned', 'Got paid back, or you paid back']];
+const TYPE_TILES = [['income', 'banknote', 'Add money', 'Salary, client payment, refund…'], ['expense', 'receipt', 'I spent money', 'Food, bills, guard pay…'], ['transfer', 'transfer', 'Move money', 'Between your own accounts'], ['shared', 'users', 'Split a bill', 'Share a cost with friends'], ['lent', 'arrowUp', 'I gave money', 'Money lent to a friend'], ['borrowed', 'arrowDown', 'I took money', 'Money a friend gave you'], ['repayment', 'handshake', 'Money returned', 'Got paid back, or you paid back']];
 const TONES = { income: 'mint', expense: 'violet', transfer: 'sky', shared: 'pink', lent: 'sun', borrowed: 'coral', repayment: 'sky', goal: 'coral' };
 const TYPE_NAMES = { income: 'Add money', expense: 'I spent money', transfer: 'Move money', shared: 'Split a bill', lent: 'I gave money', borrowed: 'I took money', repayment: 'Money returned' };
 /** Accounts that can hold a given kind of entry (lending and split bills only on personal accounts). */
@@ -1665,11 +1767,12 @@ function openTypePicker() {
   const id = selAcc(), allowed = id === 'all' ? null : purposeOf(id).types;
   const T = TYPE_TILES.filter(([k]) => !allowed || allowed.includes(k));
   const a = accById(id);
+  // Most-used first: spending is the everyday action, so it leads.
   const PRIMARY = ['expense', 'income', 'transfer'];
-  const pri = T.filter(([k]) => PRIMARY.includes(k));
+  const pri = PRIMARY.map(k => T.find(([x]) => x === k)).filter(Boolean);
   const sec = T.filter(([k]) => !PRIMARY.includes(k));
-  let html = `<div class="types-primary">${pri.map(([k, i, t]) => `<button class="type" data-type="${k}" data-tone="${TONES[k]}"><div class="ic">${i}</div><b>${t}</b></button>`).join('')}</div>`;
-  if (sec.length) html += `<button class="type-more-btn" id="typeMoreBtn">More options ▾</button><div class="types-secondary" id="typeSecGrid" hidden>${sec.map(([k, i, t, s]) => `<button class="type" data-type="${k}" data-tone="${TONES[k]}"><div class="ic">${i}</div><b>${t}</b><span>${s}</span></button>`).join('')}</div>`;
+  let html = `<div class="types-primary">${pri.map(([k, i, t]) => `<button class="type" data-type="${k}" data-tone="${TONES[k]}"><div class="ic">${ic(i, 22)}</div><b>${t}</b></button>`).join('')}</div>`;
+  if (sec.length) html += `<button class="type-more-btn" id="typeMoreBtn">More options ▾</button><div class="types-secondary" id="typeSecGrid" hidden>${sec.map(([k, i, t, s]) => `<button class="type" data-type="${k}" data-tone="${TONES[k]}"><div class="ic">${ic(i, 20)}</div><b>${t}</b><span>${s}</span></button>`).join('')}</div>`;
   const w = openSheet(a ? 'Add to ' + (a.short || a.name) : 'What do you want to add?', html);
   const moreBtn = $('#typeMoreBtn', w);
   if (moreBtn) moreBtn.onclick = () => { $('#typeSecGrid', w).hidden = false; moreBtn.hidden = true; };
@@ -1730,23 +1833,23 @@ function openTxnForm(type, existing, prefill = {}) {
     <div class="two"><div class="f"><label>Date</label><input class="in" type="date" name="date" value="${val('date', todayStr())}"></div>
     <div class="f"><label>Type</label><select class="in" name="category">${catOptions(cat, t.category)}</select></div></div>`;
   }
+  // Optional expense fields are collected into `extras` below and tucked behind one "More options" toggle.
+  let extras = '';
   if (type === 'expense') {
     const rec = t.recurring || {};
-    body += `<button type="button" class="extra-toggle" id="expExtras">More options ▾</button><div id="expExtrasBox" ${existing ? '' : 'hidden'}>
-    <div class="f"><label>Paid using</label><select class="in" name="paymentMethod">${methodOptions(val('paymentMethod'))}</select></div>
+    extras += `<div class="f" style="margin-top:0"><label>Paid using</label><select class="in" name="paymentMethod">${methodOptions(val('paymentMethod'))}</select></div>
     ${t.recurringSourceId ? '<div class="hint">Added by itself from a repeating expense.</div>' : `<label class="toggle"><span><b>Repeats</b><div class="small muted">Add this by itself every month (like rent)</div></span><span class="switch"><input type="checkbox" name="recEnabled" ${rec.enabled ? 'checked' : ''}><span></span></span></label>
     <div id="recBox" ${rec.enabled ? '' : 'hidden'}><div class="two"><div class="f" style="margin-top:0"><label>Every</label><div class="row"><input class="in" type="number" name="recInterval" min="1" value="${rec.interval || 1}" style="width:70px"><select class="in" name="recFreq">${['daily', 'weekly', 'monthly', 'yearly'].map(f => `<option value="${f}" ${(rec.freq || 'monthly') === f ? 'selected' : ''}>${{ daily: 'day(s)', weekly: 'week(s)', monthly: 'month(s)', yearly: 'year(s)' }[f]}</option>`).join('')}</select></div></div>
-    <div class="f" style="margin-top:0"><label>Until (optional)</label><input class="in" type="date" name="recEnd" value="${rec.endDate || ''}"></div></div></div>`}
-    </div>`;
+    <div class="f" style="margin-top:0"><label>Until (optional)</label><input class="in" type="date" name="recEnd" value="${rec.endDate || ''}"></div></div></div>`}`;
   }
   if (type === 'shared') body += `<div id="splitUI"></div>
     <div class="f"><label>When should friends pay you back? <span class="muted">(optional)</span></label><input class="in" type="date" name="dueDate" value="${val('dueDate')}">
-    <div class="hint">🔔 We'll remind you on this date, and every week until it's paid.</div></div>`;
+    <div class="hint">We'll remind you on this date, and every week until it's paid.</div></div>`;
   if (type === 'lent' || type === 'borrowed') {
     body += `<div class="f"><label>${type === 'lent' ? 'Who did you give it to?' : 'Who gave you the money?'}</label><select class="in" name="friendId">${friendOptions(val('friendId'), t.friendId)}</select></div>
     <div class="two"><div class="f"><label>Date</label><input class="in" type="date" name="date" value="${val('date', todayStr())}"></div>
     <div class="f"><label>${type === 'lent' ? 'Get it back by' : 'Pay back by'} <span class="muted">(optional)</span></label><input class="in" type="date" name="dueDate" value="${val('dueDate')}"></div></div>
-    <div class="hint">🔔 We'll remind you on this date, and every week until it's ${type === 'lent' ? 'returned' : 'paid back'}.</div>
+    <div class="hint">We'll remind you on this date, and every week until it's ${type === 'lent' ? 'returned' : 'paid back'}.</div>
     <div class="f"><label>What was it for?</label><input class="in" name="description" value="${esc(val('description'))}" placeholder="e.g. Rent help"></div>
     ${type === 'lent' ? `<label class="toggle"><span><b>Also email my friend</b><div class="small muted">A polite reminder, if their email is saved</div></span><span class="switch"><input type="checkbox" name="notifyFriend" ${existing && (S.d.reminders.find(r => r.txnId === t.id && r.status === 'active') || {}).notifyFriend ? 'checked' : ''}><span></span></span></label>` : ''}`;
     if (existing) {
@@ -1762,13 +1865,14 @@ function openTxnForm(type, existing, prefill = {}) {
     <div class="f"><label>How?</label><select class="in" name="paymentMethod">${methodOptions(val('paymentMethod'))}</select></div></div>
     <div id="allocUI"></div>`;
   }
-  const hasNotes = val('notes') || val('receiptUrl');
-  if (type !== 'expense') body += `<button type="button" class="extra-toggle" id="notesToggle">${hasNotes ? 'Notes ▴' : 'Add notes ▾'}</button>`;
-  body += `<div id="notesBox" ${hasNotes || type === 'expense' ? '' : 'hidden'}><div class="f"><label>Notes</label><textarea class="in" name="notes" placeholder="Optional">${esc(val('notes'))}</textarea></div>`;
+  extras += `<div class="f"${extras ? '' : ' style="margin-top:0"'}><label>Notes</label><textarea class="in" name="notes" placeholder="Optional">${esc(val('notes'))}</textarea></div>`;
   if (type === 'expense' || type === 'shared') {
-    body += `<div class="f"><label>Receipt</label><div class="row"><input class="in grow" name="receiptUrl" value="${esc(val('receiptUrl'))}" placeholder="Paste a link, or upload →"><label class="mini-btn" style="padding:10px 12px;cursor:pointer">Upload<input type="file" accept="image/*,application/pdf" id="rcptFile" hidden></label></div><div class="hint" id="rcptHint"></div></div>`;
+    extras += `<div class="f"><label>Receipt</label><div class="row"><input class="in grow" name="receiptUrl" value="${esc(val('receiptUrl'))}" placeholder="Paste a link, or upload →"><label class="mini-btn" style="padding:10px 12px;cursor:pointer">Upload<input type="file" accept="image/*,application/pdf" id="rcptFile" hidden></label></div><div class="hint" id="rcptHint"></div></div>`;
   }
-  body += `</div>`;
+  // Start open only when something in there is already filled in, so nothing is hidden from the user.
+  const extrasFilled = !!(val('notes') || val('receiptUrl') || val('paymentMethod') || (t.recurring && t.recurring.enabled));
+  body += `<button type="button" class="extra-toggle" id="extraToggle" aria-expanded="${extrasFilled}" aria-controls="extrasBox">${extrasFilled ? 'Fewer options ▴' : 'More options ▾'}</button>
+  <div id="extrasBox" ${extrasFilled ? '' : 'hidden'}>${extras}</div>`;
   body += `<div id="formErr"></div></form>`;
   const footer = `${existing ? '<button class="btn danger" type="button" data-del>Delete</button>' : ''}<button class="btn primary" type="button" data-save>${existing ? 'Save changes' : 'Save'}</button>`;
   const w = openSheet((existing ? 'Edit · ' : '') + titles[type], body, { footer });
@@ -1805,11 +1909,14 @@ function openTxnForm(type, existing, prefill = {}) {
   if (F('source')) F('source').addEventListener('input', () => { F('source').dataset.typed = '1'; });
   if (F('direction')) setTimeout(() => $$('#dirSeg button', w).forEach(b => b.addEventListener('click', accChanged)), 0);
   accChanged();
-  // "More options" toggles
-  const expExt = $('#expExtras', w);
-  if (expExt) expExt.onclick = () => { const box = $('#expExtrasBox', w); box.hidden = !box.hidden; expExt.textContent = box.hidden ? 'More options ▾' : 'Less options ▴'; };
-  const notesT = $('#notesToggle', w);
-  if (notesT) notesT.onclick = () => { const box = $('#notesBox', w); box.hidden = !box.hidden; notesT.textContent = box.hidden ? 'Add notes ▾' : 'Notes ▴'; };
+  // One "More options" toggle for every optional field on the form
+  const extraT = $('#extraToggle', w);
+  if (extraT) extraT.onclick = () => {
+    const box = $('#extrasBox', w);
+    box.hidden = !box.hidden;
+    extraT.textContent = box.hidden ? 'More options ▾' : 'Fewer options ▴';
+    extraT.setAttribute('aria-expanded', String(!box.hidden));
+  };
   // recurring toggle
   if (F('recEnabled')) F('recEnabled').onchange = () => { $('#recBox', w).hidden = !F('recEnabled').checked; };
   // inline new friend
@@ -2013,16 +2120,16 @@ function openTxnDetail(id) {
   if (t.type === 'lent' || t.type === 'borrowed') {
     const i = itemsFor(t.id)[0] || { settled: 0, outstanding: t.amount, status: 'Not paid yet', allocations: [], overdue: false };
     extra = `<div class="card" style="margin-top:12px">${kv(t.type === 'lent' ? 'You gave' : 'You took', `<span class="num">${money(t.amount)}</span>`)}${kv('Paid back', `<span class="num">${money(i.settled)}</span>`)}${kv('Still to come', `<span class="num ${i.outstanding > 0 ? (t.type === 'lent' ? 'pos' : 'neg') : ''}">${money(i.outstanding)}</span>`)}${kv('Late', i.overdue ? `<span class="num neg">${money(i.outstanding)}</span>` : '<span class="muted">—</span>')}${kv('Status', i.status)}</div>
-    ${i.allocations.length ? `<div class="section"><h2>Money paid back</h2></div><div class="list">${i.allocations.map(a => { const r = D.txnMap[a.repaymentId]; return `<button class="item" data-act="txn" data-id="${a.repaymentId}"><div class="ic">🤝</div><div class="grow"><div class="t">${r ? fmtDate(r.date) : ''}</div><div class="s">${r && r.paymentMethod ? esc(r.paymentMethod) : 'Repayment'}</div></div><div class="amt num">${money(a.amount)}</div></button>`; }).join('')}</div>` : ''}
+    ${i.allocations.length ? `<div class="section"><h2>Money paid back</h2></div><div class="list">${i.allocations.map(a => { const r = D.txnMap[a.repaymentId]; return `<button class="item" data-act="txn" data-id="${a.repaymentId}"><div class="ic">${ic('handshake')}</div><div class="grow"><div class="t">${r ? fmtDate(r.date) : ''}</div><div class="s">${r && r.paymentMethod ? esc(r.paymentMethod) : 'Repayment'}</div></div><div class="amt num">${money(a.amount)}</div></button>`; }).join('')}</div>` : ''}
     ${i.outstanding > 0 ? `<button class="btn primary block" style="margin-top:12px" data-act="settle" data-id="${t.friendId}" data-dir="${t.type === 'lent' ? 'received' : 'paid'}" data-target="${t.id}">Got money back</button>` : ''}`;
   }
   if (t.type === 'repayment') {
     const al = S.d.allocations.filter(a => a.repaymentId === t.id);
-    extra = `<div class="section"><h2>This money was for</h2></div><div class="list">${al.map(a => { const x = D.txnMap[a.targetTxnId]; return `<button class="item" data-act="txn" data-id="${a.targetTxnId}"><div class="ic">${x ? esc(txnIcon(x)) : '•'}</div><div class="grow"><div class="t ellipsis">${x ? esc(txnTitle(x)) : 'Deleted item'}</div><div class="s">${x ? fmtDate(x.date) + ' · ' + ({ lent: 'Money lent', borrowed: 'Money borrowed', shared: 'Shared bill' }[x.type] || '') : ''}</div></div><div class="amt num">${money(a.amount)}</div></button>`; }).join('') || '<div class="empty">No linked items.</div>'}</div>
+    extra = `<div class="section"><h2>This money was for</h2></div><div class="list">${al.map(a => { const x = D.txnMap[a.targetTxnId]; return `<button class="item" data-act="txn" data-id="${a.targetTxnId}"><div class="ic">${x ? txnIcon(x) : ''}</div><div class="grow"><div class="t ellipsis">${x ? esc(txnTitle(x)) : 'Deleted item'}</div><div class="s">${x ? fmtDate(x.date) + ' · ' + ({ lent: 'Money lent', borrowed: 'Money borrowed', shared: 'Shared bill' }[x.type] || '') : ''}</div></div><div class="amt num">${money(a.amount)}</div></button>`; }).join('') || '<div class="empty">No linked items.</div>'}</div>
     <div class="hint">Money paid back is not counted as income or spending. It only clears what was owed.</div>`;
   }
   const typeName = t.goalId ? 'Saved for a goal' : { income: 'Money added', transfer: 'Moved between your accounts', expense: 'You spent', shared: 'Shared bill', lent: 'You gave money', borrowed: 'You took money', repayment: t.direction === 'received' ? 'You got money back' : 'You paid back' }[t.type];
-  const body = `<div style="text-align:center;padding:4px 0 8px"><div class="ic" style="margin:0 auto 8px;width:52px;height:52px;font-size:24px">${esc(txnIcon(t))}</div><div style="font-size:30px;font-weight:800" class="num">${money(t.amount)}</div><div class="muted small">${typeName}</div></div>
+  const body = `<div style="text-align:center;padding:4px 0 8px"><div class="ic" style="margin:0 auto 8px;width:52px;height:52px">${txnIcon(t)}</div><div style="font-size:30px;font-weight:800" class="num">${money(t.amount)}</div><div class="muted small">${typeName}</div></div>
   <div class="card">${t.type === 'transfer' ? kv('From', esc((accById(acctOf(t)) || {}).name || '')) + kv('To', esc((accById(t.toAccountId) || {}).name || '')) : kv('Account', esc((accById(acctOf(t)) || {}).name || ''))}${kv('Came from', esc(t.type === 'income' ? t.source : ''))}${kv(t.type === 'income' ? (purposeOf(acctOf(t)).payeeIn.replace(/ \(optional\)|\?/g, '')) : (purposeOf(acctOf(t)).payeeOut || 'Paid to'), esc(t.payee || ''))}${kv('For', esc(t.description))}${kv('Date', fmtDate(t.date))}${kv('Type', c ? esc(c.icon + ' ' + c.name) : '')}${kv(t.type === 'repayment' ? (t.direction === 'received' ? 'From' : 'To') : 'Friend', f ? esc(f.name) : '')}${kv('Paid by', t.type === 'shared' ? (t.paidBy === 'multiple' ? 'Multiple people' : esc(friendName(t.paidBy))) : '')}${kv('Paid using', esc(t.paymentMethod))}${kv('Pay back by', t.dueDate ? fmtDate(t.dueDate) : '')}${kv('Reminder', t.reminderDate ? fmtDate(t.reminderDate) + ' · ' + esc(t.reminderFreq) : '')}${kv('Repeats', t.recurring && t.recurring.enabled ? `every ${t.recurring.interval > 1 ? t.recurring.interval + ' ' : ''}${{ daily: 'day', weekly: 'week', monthly: 'month', yearly: 'year' }[t.recurring.freq]}${t.recurring.interval > 1 ? 's' : ''}${t.recurring.endDate ? ' until ' + fmtDate(t.recurring.endDate) : ''}` : '')}${kv('Receipt', t.receiptUrl ? `<a href="${esc(t.receiptUrl)}" target="_blank" rel="noopener">Open ↗</a>` : '')}${kv('Notes', esc(t.notes))}${kv('Saved', fmtTs(t.createdAt))}${t.updatedAt && t.updatedAt !== t.createdAt ? kv('Edited', fmtTs(t.updatedAt)) : ''}</div>${extra}`;
   const w = openSheet('Details', body, { footer: `<button class="btn danger" data-del>Delete</button><button class="btn primary" data-edit>Edit</button>` });
   $('[data-edit]', w).onclick = () => { closeSheet(w); t.goalId ? openContribute(null, t) : openTxnForm(t.type, t); };
@@ -2257,7 +2364,7 @@ async function runDiagnostics(btn) {
   const out = $('#diagOut'); // re-query: loading data redraws the page
   if (!out) return;
   out.innerHTML = `<div class="alert ${pass ? 'info' : 'neg'}" style="margin-top:0">${pass ? '✅ Everything is working.' : '⚠️ Some checks failed — see below.'}</div>` +
-    rows.map(r => `<div class="kv"><span>${r.ok ? '✅' : '❌'} ${esc(r.name)}</span><span class="small" style="font-weight:500">${esc(r.detail)}</span></div>`).join('');
+    rows.map(r => `<div class="kv"><span class="hc ${r.ok ? 'ok' : 'bad'}">${ic(r.ok ? 'check' : 'close', 15)} ${esc(r.name)}</span><span class="small" style="font-weight:500">${esc(r.detail)}</span></div>`).join('');
   if (btn.isConnected) { btn.disabled = false; btn.textContent = label; }
 }
 async function boot() {
